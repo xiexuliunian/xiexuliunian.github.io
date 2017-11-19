@@ -79,12 +79,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="些许流年">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Argparse学习笔记在学习python的时候，经常遇到下面的语句。123456789import argparseif __name__== &quot;__main__&quot;:    parser=argparse.ArgumentParser()    parser.add_argument(&apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Argparse 笔记">
+<meta property="og:url" content="http://yoursite.com/2017/11/19/Argparse-笔记/index.html">
 <meta property="og:site_name" content="些许流年">
+<meta property="og:description" content="Argparse学习笔记在学习python的时候，经常遇到下面的语句。123456789import argparseif __name__== &quot;__main__&quot;:    parser=argparse.ArgumentParser()    parser.add_argument(&apos;--number1&apos;,help=&apos;第一个数字&apos;)    parser.add_argument(&apos;--numb">
+<meta property="og:updated_time" content="2017-11-19T05:33:48.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="些许流年">
+<meta name="twitter:title" content="Argparse 笔记">
+<meta name="twitter:description" content="Argparse学习笔记在学习python的时候，经常遇到下面的语句。123456789import argparseif __name__== &quot;__main__&quot;:    parser=argparse.ArgumentParser()    parser.add_argument(&apos;--number1&apos;,help=&apos;第一个数字&apos;)    parser.add_argument(&apos;--numb">
 
 
 
@@ -114,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/19/Argparse-笔记/"/>
 
 
 
 
 
-  <title>些许流年</title>
+  <title>Argparse 笔记 | 些许流年</title>
   
 
 
@@ -139,8 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +216,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/19/Argparse-笔记/" itemprop="url">Argparse 笔记</a></h1>
+          <h1 class="post-title" itemprop="name headline">Argparse 笔记</h1>
         
 
         <div class="post-meta">
@@ -297,9 +298,7 @@
       
 
       
-        
-          
-            <h2 id="Argparse学习笔记"><a href="#Argparse学习笔记" class="headerlink" title="Argparse学习笔记"></a><center>Argparse学习笔记</center></h2><h3 id="在学习python的时候，经常遇到下面的语句。"><a href="#在学习python的时候，经常遇到下面的语句。" class="headerlink" title="在学习python的时候，经常遇到下面的语句。"></a>在学习python的时候，经常遇到下面的语句。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__== <span class="string">"__main__"</span>:</span><br><span class="line">    parser=argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">'--number1'</span>,help=<span class="string">'第一个数字'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--number2'</span>,help=<span class="string">'第二个数字'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--operation'</span>,help=<span class="string">'操作符'</span>)</span><br><span class="line"></span><br><span class="line">    args=parser.parse_args()</span><br></pre></td></tr></table></figure>
+        <h2 id="Argparse学习笔记"><a href="#Argparse学习笔记" class="headerlink" title="Argparse学习笔记"></a><center>Argparse学习笔记</center></h2><h3 id="在学习python的时候，经常遇到下面的语句。"><a href="#在学习python的时候，经常遇到下面的语句。" class="headerlink" title="在学习python的时候，经常遇到下面的语句。"></a>在学习python的时候，经常遇到下面的语句。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__== <span class="string">"__main__"</span>:</span><br><span class="line">    parser=argparse.ArgumentParser()</span><br><span class="line">    parser.add_argument(<span class="string">'--number1'</span>,help=<span class="string">'第一个数字'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--number2'</span>,help=<span class="string">'第二个数字'</span>)</span><br><span class="line">    parser.add_argument(<span class="string">'--operation'</span>,help=<span class="string">'操作符'</span>)</span><br><span class="line"></span><br><span class="line">    args=parser.parse_args()</span><br></pre></td></tr></table></figure>
 <p><font color="red" size="3px">这些是什么呢？</font>  我们来看下定义，argparse是python用于解析命令行参数和选项的标准模块，用于代替已经过时的optparse模块。argparse模块的作用是用于解析命令行参数，例如python parseTest.py input.txt output.txt –user=name –port=8080。</p>
 <h2 id="第一步设置一个解析器"><a href="#第一步设置一个解析器" class="headerlink" title="第一步设置一个解析器"></a><font color="#4590a3" size="4px">第一步设置一个解析器</font></h2><ul>
 <li><p>使用argparse的第一步就是创建一个解析器对象，并告诉它将会有些什么参数。那么当你的程序运行时，该解析器就可以用于处理命令行参数。解析器类是 ArgumentParser 。构造方法接收几个参数来设置用于程序帮助文本的描述信息以及其他全局的行为或设置。</p>
@@ -318,8 +317,6 @@
 </ul>
 <p>TODO进一步的细节</p>
 
-          
-        
       
     </div>
     
@@ -336,148 +333,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/18/python笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ZXD">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="些许流年">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/18/python笔记/" itemprop="url">python 学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-18T13:46:18+08:00">
-                2017-11-18
-              </time>
+              <a href="/2017/11/18/python笔记/" rel="next" title="python 学习笔记">
+                <i class="fa fa-chevron-left"></i> python 学习笔记
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a><center>学习笔记</center></h1><h3 id="1-元组-tuple-里面的元素是不可以更改的，但是元组里面的列表中的元素是可以更改的。如下所示。"><a href="#1-元组-tuple-里面的元素是不可以更改的，但是元组里面的列表中的元素是可以更改的。如下所示。" class="headerlink" title="1. 元组(tuple)里面的元素是不可以更改的，但是元组里面的列表中的元素是可以更改的。如下所示。"></a>1. <font color="#4590a3" size="4px">元组(tuple)</font>里面的元素是不可以更改的，但是元组里面的列表中的元素是可以更改的。如下所示。</h3><center><img src="/2017/11/18/python笔记/1.png" title="说明"></center>
-
-<h3 id="2-if-语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else，所以，请测试并解释为什么下面的程序打印的是teenager："><a href="#2-if-语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else，所以，请测试并解释为什么下面的程序打印的是teenager：" class="headerlink" title="2. if 语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else，所以，请测试并解释为什么下面的程序打印的是teenager："></a>2. <font color="#4590a3" size="4px">if </font>语句执行有个特点，它是从上往下判断，如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else，所以，请测试并解释为什么下面的程序打印的是teenager：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">20</span></span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">6</span>:</span><br><span class="line">    print(<span class="string">'teenager'</span>)</span><br><span class="line"><span class="keyword">elif</span> age &gt;= <span class="number">18</span>:</span><br><span class="line">    print(<span class="string">'adult'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'kid'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="3-循环-我们可以轻易的实现一个100的求和。"><a href="#3-循环-我们可以轻易的实现一个100的求和。" class="headerlink" title="3.循环 我们可以轻易的实现一个100的求和。"></a>3.<font color="#4590a3" size="4px">循环 </font>我们可以轻易的实现一个100的求和。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">101</span>):</span><br><span class="line">    sum +=i</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
-<h3 id="4-3-字典-dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。"><a href="#4-3-字典-dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。" class="headerlink" title="4. 3.字典 dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。"></a>4. 3.<font color="#4590a3" size="4px">字典 </font>dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Michael'</span>]</span><br><span class="line"><span class="number">95</span></span><br></pre></td></tr></table></figure>
-<p>和list比较，dict有以下几个特点：</p>
-<p>查找和插入的速度极快，不会随着key的增加而变慢；</p>
-<p>需要占用大量的内存，内存浪费多。</p>
-<p>而list相反：</p>
-<p>查找和插入的时间随着元素的增加而增加；<br>占用空间小，浪费内存很少。</p>
-<font color="#4590a3" size="4px">Set(集合) </font> 也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。而且集合中的数据是无序的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line">&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure><br><br><font color="#4590a3" size="4px">5 .Python中的Map函数 </font>  
-
-<p><code>map()</code>是 Python 内置的高阶函数，它接收一个函数 f 和一个 list，并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x*x</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> map(f, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>])</span><br></pre></td></tr></table></figure></p>
-<p>输出结果为：<br><code>[1, 4, 9, 10, 25, 36, 49, 64, 81]</code></p>
-<p><font color="red" size="6px">任务 </font><br>&ensp;&ensp;&ensp;&ensp;假设用户输入的英文名字不规范，没有按照首字母大写，后续字母小写的规则，请利用map()函数，把一个list（包含若干不规范的英文名字）变成一个包含规范英文名字的list：  输入：[‘adam’, ‘LISA’, ‘barT’]<br>输出：[‘Adam’, ‘Lisa’, ‘Bart’]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">format_name</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="comment"># s=s[0].upper()+s[1:].lower()</span></span><br><span class="line">    <span class="comment"># s=s.capitalize()</span></span><br><span class="line">    s=s.title()</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line">a=map(format_name,[<span class="string">'adam'</span>,<span class="string">'LISA'</span>,<span class="string">'barT'</span>])</span><br><span class="line">print(list(a))</span><br></pre></td></tr></table></figure>
-<p>输出为：<code>[&#39;Adam&#39;, &#39;Lisa&#39;, &#39;Bart&#39;]</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -487,10 +364,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -498,6 +376,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -518,8 +400,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -572,6 +463,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Argparse学习笔记"><span class="nav-number">1.</span> <span class="nav-text">Argparse学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在学习python的时候，经常遇到下面的语句。"><span class="nav-number">1.1.</span> <span class="nav-text">在学习python的时候，经常遇到下面的语句。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步设置一个解析器"><span class="nav-number">2.</span> <span class="nav-text">第一步设置一个解析器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步-定义参数"><span class="nav-number">3.</span> <span class="nav-text">第二步 定义参数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -705,6 +612,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 

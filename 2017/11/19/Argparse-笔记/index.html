@@ -208,7 +208,7 @@
 <p>输出 <code>[&lt;class &#39;int&#39;&gt;, &lt;class &#39;float&#39;&gt;]</code></p>
 <p><code>&#39;count&#39;</code> - 计算关键字参数出现的次数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--inter'</span>,<span class="string">'-i'</span>,action=<span class="string">'count'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">args=parser.parse_args([<span class="string">'-iii'</span>])</span><br><span class="line"></span><br><span class="line">print(args.inter)</span><br><span class="line">args=parser.parse_args([<span class="string">'-iiiiii'</span>])</span><br><span class="line">print(args.inter)</span><br></pre></td></tr></table></figure></p>
 <p>输出为 <code>3 6</code></p>
-
+<h3 id="2-3-nargs参数"><a href="#2-3-nargs参数" class="headerlink" title="2.3 nargs参数"></a>2.3 nargs参数</h3>
     </div>
 
     
@@ -244,6 +244,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/12/14/Markdown-语法说明/">Markdown 语法说明</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/12/07/vscode-python-配置环境/">vscode python 配置环境</a>
             </li>
             
@@ -253,10 +257,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/11/19/Argparse-笔记/">Argparse 笔记</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/11/18/python笔记/">python 学习笔记</a>
             </li>
             
         </ul>

@@ -392,7 +392,53 @@
 <p>输出 <code>[&lt;class &#39;int&#39;&gt;, &lt;class &#39;float&#39;&gt;]</code></p>
 <p><code>&#39;count&#39;</code> - 计算关键字参数出现的次数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--inter'</span>,<span class="string">'-i'</span>,action=<span class="string">'count'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">args=parser.parse_args([<span class="string">'-iii'</span>])</span><br><span class="line"></span><br><span class="line">print(args.inter)</span><br><span class="line">args=parser.parse_args([<span class="string">'-iiiiii'</span>])</span><br><span class="line">print(args.inter)</span><br></pre></td></tr></table></figure></p>
 <p>输出为 <code>3 6</code></p>
-<h3 id="2-3-nargs参数"><a href="#2-3-nargs参数" class="headerlink" title="2.3 nargs参数"></a>2.3 nargs参数</h3>
+<h3 id="2-3-nargs参数"><a href="#2-3-nargs参数" class="headerlink" title="2.3 nargs参数"></a>2.3 nargs参数</h3><p><code>nargs</code>关键字参数将一个动作(<code>action</code>)与不同数目的命令行参数关联在一起。</p>
+<blockquote>
+<p>它的值首先可以是一个整数 <strong><code>N</code></strong></p>
+</blockquote>
+<ul>
+<li>我们先来看一个默认的情况, 没有nargs参数：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line">args=parser.parse_args()</span><br><span class="line"></span><br><span class="line">print(args.foo)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py --foo 2</span><br></pre></td></tr></table></figure></p>
+<p>结果为 <strong><code>2</code></strong></p>
+<ul>
+<li>再来看一个具有nargs参数的情况  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>,nargs=<span class="number">2</span>)</span><br><span class="line">args=parser.parse_args()</span><br><span class="line"></span><br><span class="line">print(args.foo)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里 <code>nargs=2</code> ,规定可以传递两个参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py --foo 2 3</span><br></pre></td></tr></table></figure></p>
+<p>来看一下输出<br><code>[&#39;2&#39;, &#39;3&#39;]</code>,是一个列表，而之前的是元素本身。</p>
+<blockquote>
+<p><code>nargs</code>的值可以是 <strong><code>？</code></strong>,如果有的话就从命令行读取一个参数并生成一个元素。如果没有对应的命令行参数，则产生一个来自default的值。注意，对于可选参数，有另外一种情况 - 有选项字符串但是后面没有跟随命令行参数。在这种情况下，将生成一个来自const的值</p>
+</blockquote>
+<ul>
+<li>来看一个有参数的情况<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>,nargs=<span class="string">"?"</span>)</span><br><span class="line">args=parser.parse_args()</span><br><span class="line"></span><br><span class="line">print(args.foo)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py --foo 2</span><br></pre></td></tr></table></figure></p>
+<p>结果为 <strong><code>2</code></strong></p>
+<ul>
+<li>没有参数时<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>,nargs=<span class="string">"?"</span>,default=<span class="string">'2'</span>,const=<span class="string">'3'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'int'</span>,nargs=<span class="string">'?'</span>,default=<span class="string">'z'</span>)</span><br><span class="line">args=parser.parse_args()</span><br><span class="line"></span><br><span class="line">print(args.foo,args.int)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py</span><br></pre></td></tr></table></figure></p>
+<p>输出 <strong><code>2 z</code></strong></p>
+<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py y --foo</span><br></pre></td></tr></table></figure></p>
+<p>输出 <strong><code>3 y</code></strong></p>
+<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py y --foo 5</span><br></pre></td></tr></table></figure></p>
+<p>输出 <strong><code>5 y</code></strong></p>
+<blockquote>
+<p><code>nargs</code>的值可以是 <code>*</code>和 <code>+</code>, 出现的所有命令行参数都被收集到一个列表中。注意，一般情况下具有多个带有 <code>nargs=&#39;*&#39;</code>的位置参数是不合理的，但是多个带有 <code>nargs=&#39;*&#39;</code>的可选参数是可能的。<code>+</code>的情况下，如果没有至少出现一个命令行参数将会产生一个错误信息，<code>*</code>不会产生这个问题。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--bar'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'baz'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line">args=parser.parse_args()</span><br><span class="line">print(<span class="string">'args.foo=%6s'</span>%args.foo,<span class="string">'args.bar=%6s'</span>%args.bar,<span class="string">'args.baz=%6s'</span>%args.baz,sep=<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python args.py a b --foo 2 3 --bar z s</span><br></pre></td></tr></table></figure></p>
+<p>输出</p>
+<p><code>args.foo=[&#39;2&#39;, &#39;3&#39;]</code></p>
+<p><code>args.bar=[&#39;z&#39;, &#39;s&#39;]</code></p>
+<p><code>args.baz=[&#39;a&#39;, &#39;b&#39;]</code></p>
+<blockquote>
+<p>如果没有提供 <code>nargs</code>关键字参数，读取的参数个数取决于<code>action</code>。通常这意味着将读取一个命令行参数并产生一个元素（不是一个列表）。</p>
+</blockquote>
+
         </div>
     
 

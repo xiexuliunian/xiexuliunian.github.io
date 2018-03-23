@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="些许流年"/>
+        <meta property="og:title" content="manjaro配置及美化"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archiv - 些许流年</title>
+    <title>manjaro配置及美化 - 些许流年</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -131,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -141,77 +139,68 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Archiv</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2017/12/14/Markdown-语法说明/">
-        <span class="archive-date">
-            Dec 2017
-        </span>
-        Markdown 语法说明
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/03/23/manjaro配置及美化/">
+                manjaro配置及美化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="manjaro-麻将-配置及美化"><a href="#manjaro-麻将-配置及美化" class="headerlink" title="manjaro(麻将)配置及美化"></a><center>manjaro(麻将)配置及美化</center></h1><p>manjaro是一款基于archlinux的linux发行版，以前主要用<code>ubuntu</code>系统的，主要用来使用CUDA的，在ubuntu上的安装过程十分痛苦，第一次使用manjaro,在其上的安装过程让我惊叹，这么好用呀，所以就迷上了这款系统。</p>
+<h2 id="1-系统安装"><a href="#1-系统安装" class="headerlink" title="1. 系统安装"></a>1. 系统安装</h2><ul>
+<li><p>在制作启动盘时，使用其他的启动盘制作都会无法进行安装，使用rufus这款软件，以DD模式写入才可以安装。</p>
+</li>
+<li><p>跟在ubuntu上的安装过程十分类似，都是图形界面的，但是有一点，注意要在win10的EFI分区(本机是/dev/sda2 上选择<code>/boot/efi</code>标记),其余都是类似的，点下一步就ok了</p>
+</li>
+</ul>
+<h2 id="2-系统更新及软件安装"><a href="#2-系统更新及软件安装" class="headerlink" title="2.系统更新及软件安装"></a>2.系统更新及软件安装</h2><h2 id="添加源"><a href="#添加源" class="headerlink" title="添加源"></a>添加源</h2><p>打开终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/pacman.conf</span><br></pre></td></tr></table></figure></p>
+<p>在文件底部加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</span><br><span class="line">Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</span><br></pre></td></tr></table></figure>
+<p>然后执行<br><figure class="highlight plain"><figcaption><span>pacman -Syy && sudo pacman -S archlinuxcn-keyring```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">之后就可以从包管理器中搜索安装各种软件了enjoying，部分软件仍然需要配置，如搜狗输入法</span><br></pre></td></tr></table></figure></p>
+<p>sudo pacman -S fcitx-sogoupinyin<br>sudo pacman -S fcitx-im  #全部安装<br>suao pacman -S fcitx-configtool  #图形化配置工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需要设置输入法变量</span><br><span class="line">`sudo gedit ~/.profile(有可能是.xprofile)`,在其底部加入</span><br></pre></td></tr></table></figure></p>
+<p>export GTK_IM_MODULE=fcitx<br>export QT_IM_MODULE=fcitx<br>export XMODIFIERS=”@im=fcitx”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">另外一个安装是使用AUR源，首先安装yaourt</span><br><span class="line"></span><br><span class="line">`sudo pacman -S yaourt`</span><br><span class="line"></span><br><span class="line">修改`/etc/yaourtrc`,去掉`# AURURL`的注释，修改为</span><br></pre></td></tr></table></figure></p>
+<p>AURURL=”<a href="https://aur.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">https://aur.tuna.tsinghua.edu.cn</a>“<br>```</p>
+<p>这样就可以使用AUR源了哟</p>
+<h2 id="3-系统美化"><a href="#3-系统美化" class="headerlink" title="3. 系统美化"></a>3. 系统美化</h2><h2 id="来个配件大全"><a href="#来个配件大全" class="headerlink" title="来个配件大全"></a>来个配件大全</h2><h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>Application:<code>Arc</code></p>
+<p>Cursor:<code>Xcursor-breeze</code></p>
+<p>Icons:<code>Numix-Circle-Light</code></p>
+<p>Shell:<code>Adapta-Nokto-Eta-Maia</code></p>
+<h2 id="下面放美图"><a href="#下面放美图" class="headerlink" title="下面放美图"></a>下面放美图</h2><center><img src="/2018/03/23/manjaro配置及美化/1.png" title="说明"></center>
+
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2017/12/07/vscode-python-配置环境/">
-        <span class="archive-date">
-            Dec 2017
-        </span>
-        vscode python 配置环境
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/23/manjaro配置及美化/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        manjaro配置及美化
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/11/18/python笔记/">
-        <span class="archive-date">
-            Nov 2017
-        </span>
-        python 学习笔记
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/15/数据库/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        数据库
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/11/19/Argparse-笔记/">
-        <span class="archive-date">
-            Nov 2017
-        </span>
-        Argparse 笔记
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/11/22/二叉树遍历顺序/">
-        <span class="archive-date">
-            Nov 2017
-        </span>
-        二叉树遍历顺序
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
 

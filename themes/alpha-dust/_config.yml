@@ -1,0 +1,38 @@
+# Logo (Font Awesome Class)
+fa_logo: fa-cube
+
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  About: /about.html
+  Tags: /tags
+  Categories: /categories
+  Contact: /contact.html
+
+# Default post title
+default_post_title: Untitled
+
+# Archive Date Format
+archive_date_format: MMM YYYY
+
+# Comments.
+comments:
+  # Disqus comments
+  disqus_shortname:
+
+# Google Analytics Tracking ID
+google_analytics:
+
+# Social Accounts
+twitter_url: https://twitter.com/?lang=en
+facebook_url: https://www.facebook.com/
+github_url: https://github.com/xiexuliunian
+email_url: zzuzxd@126.com
+
+# Footer About Text
+footer_about: "This theme was developed by <a href=\"https://github.com/klugjo\">zxd</a>. The source code is available on Github. Create Websites. Make Magic."
+
+# Footer Copyright Line
+footer_copyright: "zxd. All right reserved | Design & Hexo <a href=\"http://www.codeblocq.com/\">YF</a>"
+

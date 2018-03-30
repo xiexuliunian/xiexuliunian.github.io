@@ -15,7 +15,7 @@ manjaro是一款基于archlinux的linux发行版，以前主要用`ubuntu`系统
 ## 2.系统更新及软件安装
 ## 更换中国源
 ```
-sudo pacman-mirrors -b testing -c China  //选择中国源并更新  
+sudo pacman-mirrors -c China  //选择中国源  
 sudo pacman -Syyu  //更新系统  
 ```
 ## 添加源

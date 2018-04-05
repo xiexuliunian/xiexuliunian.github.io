@@ -9,7 +9,7 @@ tags:
 本机使用的是manjaro archlinux 发行版，在安装rEFInd上比较方便，直接 [源码](https://sourceforge.net/projects/refind/ "这是rEFInd的源码连接")，得到一个`refind-bin-0.11.2.zip`的压缩包，解压后转到该文件夹下。
 
 ```
-sudo chmod +x redind-install //为安装文件赋予权限
+sudo chmod +x refind-install //为安装文件赋予权限
 ```
 ```
 sudo ./refind-install //安装

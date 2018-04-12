@@ -159,7 +159,7 @@ systemctl enable NetworkManager
 pacman -Syu grub efibootmgr
 pacman -Syu efibootmgr
 grub-mkconfig -o boot/grub/grub.cfg
-grub install /dev/sda
+grub-install /dev/sda
 
 ```
 ## 退出Chroot

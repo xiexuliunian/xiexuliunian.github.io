@@ -46,6 +46,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=”@im=fcitx”
 ```
+如果还是不行的话，在/etc/profile文件中加入上述指令
+
 另外一个安装是使用AUR源，首先安装yaourt
 
 `sudo pacman -S yaourt`

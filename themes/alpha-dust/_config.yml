@@ -5,7 +5,7 @@ fa_logo: fa-cube
 menu:
   主页: /
   档案: /archives
-  个人网页: /about/.html
+  个人网页: /about/index.html
   # Tags: /tags
   分类: /categories
   #Contact: /contact.html

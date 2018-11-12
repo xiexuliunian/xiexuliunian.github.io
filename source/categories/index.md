@@ -1,4 +1,6 @@
 ---
-title: categories
-date: 2018-03-24 21:00:24
+title: Lsoftmax
+date: 2018-11-12 21:40:01
+categories:
+- 论文
 ---

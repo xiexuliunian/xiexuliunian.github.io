@@ -1,7 +1,7 @@
 ---
 title: manjaro配置及美化
 date: 2018-03-23 14:52:44
-tags:
+categories: linux
 ---
 # <center>manjaro(麻将)配置及美化</center>
 manjaro是一款基于archlinux的linux发行版，以前主要用`ubuntu`系统的，主要用来使用CUDA的，在ubuntu上的安装过程十分痛苦，第一次使用manjaro,在其上的安装过程让我惊叹，这么好用呀，所以就迷上了这款系统。

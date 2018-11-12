@@ -1,7 +1,7 @@
 ---
 title: Archlinux 安装配置美化
 date: 2018-04-05 17:24:48
-tags:
+categories: linux
 ---
 # <center>Archlinux 安装配置美化</center>
 

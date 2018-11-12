@@ -1,7 +1,7 @@
 ---
 title: python 学习笔记
 date: 2017-11-18 13:46:18
-tags: python基本知识
+categories: python基础知识
 ---
 # <center>学习笔记</center>
 ### 1. <font color="#4590a3" size = "4px">元组(tuple)</font>里面的元素是不可以更改的，但是元组里面的列表中的元素是可以更改的。如下所示。

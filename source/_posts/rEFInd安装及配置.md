@@ -1,7 +1,7 @@
 ---
 title: rEFInd安装及配置
 date: 2018-03-30 09:36:39
-tags:
+categories: linux
 ---
 # <center>rEFInd安装及配置</center>
 ##  `注意`  rEFInd引导项仅支持EFI引导模式，对传统的BIOS引导不支持

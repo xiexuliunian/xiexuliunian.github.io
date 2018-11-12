@@ -1,7 +1,7 @@
 ---
 title: vscode python 配置环境
 date: 2017-12-07 09:19:09
-tags:
+categories: python基础知识
 ---
 # <center>vscode python 的配置环境</center>
 * 以下的配置仅针对，python vscode 

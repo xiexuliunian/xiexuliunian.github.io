@@ -1,7 +1,7 @@
 ---
 title: Argparse 笔记
 date: 2017-11-19 11:54:58
-tags:
+categories: python基础知识
 ---
 ## <center>1.Argparse学习笔记</center>
 ### 在学习python的时候，经常遇到下面的语句。

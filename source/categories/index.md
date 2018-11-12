@@ -1,5 +1,5 @@
 ---
-title: Lsoftmax
-date: 2018-11-12 21:40:01
+title: categories
+date: 2018-11-12 21:57:21
 type: "categories"
 ---

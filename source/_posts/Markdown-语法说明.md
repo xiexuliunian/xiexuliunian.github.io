@@ -1,7 +1,7 @@
 ---
 title: Markdown 语法说明
 date: 2017-12-14 13:21:12
-categories: Markdown
+categories: 技术工具
 ---
 <center>Markdownd的语法说明</center>
 
@@ -77,7 +77,7 @@ There's a <br /> above me!
 ```
 ![图片名字](网址)
 ```
-![陌上花开](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513240842596&di=3f709ec01342b92906b56d3e4fcad471&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201407%2F30%2F20140730143346_MUG4w.thumb.700_0.jpeg)
+<div style="width: 200px; margin: auto">![陌上花开](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513240842596&di=3f709ec01342b92906b56d3e4fcad471&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201407%2F30%2F20140730143346_MUG4w.thumb.700_0.jpeg)</div>
 
 
 分割线可以为`***`或者`---`

@@ -1,7 +1,7 @@
 ---
 title: git命令
 date: 2018-11-15 21:21:33
-categories: git学习
+categories: 技术工具
 ---
 # <center>git常用命令</center>
 * 以下是一些学习工作中常用的git操作，以供记录使用。

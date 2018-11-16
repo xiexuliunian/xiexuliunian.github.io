@@ -72,5 +72,7 @@ Icons:`Numix-Circle-Light`
 Shell:`Adapta-Nokto-Eta-Maia`
 
 ## 下面放美图
+<div style="width: 90%; margin: auto">
 <center>{% asset_img 1.png 说明 %}</center>
+</div>
 

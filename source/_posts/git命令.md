@@ -73,4 +73,22 @@ git stash pop   //在上次拉取的新的代码上合并暂存的代码。
 git push        /现在你就可以放心的push代码了。
 ```
 ## 8.当你push出错的时候
-TODO
+当多人合作时，如果你push之前没有pull那么你很有可能会遇到
+```
+! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/dummymare/Hello-World.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+使用`git pull --rebase`：--rebase的作用是取消掉本地库中刚刚的commit，并把他们接到更新后的版本库之中。
+
+常用的解决方案是：
+```
+git stash           
+git pull --rebase   
+git stash pop       
+git push            
+```

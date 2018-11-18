@@ -237,7 +237,7 @@ docker rmi [镜像ID或名字]     //删除镜像
 ```
 ## 5. Dockerfile
 &emsp;&emsp;`Dockerfile` 是一个文本文件，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。
-```
+```Dockerfile
 FROM ubuntu:latest
 RUN apt-get update
 ```
@@ -261,7 +261,7 @@ RUN apt-get update
 
 
 &emsp;&emsp;既然 RUN 就像 Shell 脚本一样可以执行命令，那么我们是否就可以像 Shell 脚本一样把每个命令对应一个 RUN 
-```shell
+```Dockerfile
 FROM ubuntu:latest
 
 RUN apt-get update
@@ -277,7 +277,7 @@ RUN make -C /usr/src/redis install
 &emsp;&emsp;而上面的这种写法，创建了 7 层镜像。这是完全没有意义的，而且很多运行时不需要的东西，都被装进了镜像里，比如编译环境、更新的软件包等等。结果就是产生非常臃肿、非常多层的镜像，不仅仅增加了构建部署的时间，也很容易出错。 这是很多初学 Docker 的人常犯的一个错误。
 
 `上面的 Dockerfile 正确的写法应该是这样：`
-```shell
+```Dockerfile
 FROM ubuntu:latest
 
 RUN buildDeps='gcc libc6-dev make' \
@@ -365,7 +365,7 @@ docker build [选项] <上下文路径/URL/->
 
 ### COPY
 &emsp;&emsp;`COPY` 指令将从构建上下文目录中 `<源路径>`的文件/目录复制到新的一层的镜像内的`<目标路径>`位置。比如：
-```
+```Dockerfile
 COPY package.json /usr/src/app/
 ```
 ### ADD
@@ -374,14 +374,156 @@ COPY package.json /usr/src/app/
 &emsp;&emsp;在 `Docker` 官方的 `Dockerfile` 最佳实践文档 中要求，尽可能的使用 `COPY`，因为 `COPY` 的语义很明确，就是复制文件而已，而 `ADD` 则包含了更复杂的功能，其行为也不一定很清晰。最适合使用 `ADD` 的场合，就是所提及的需要自动解压缩的场合。
 
 &emsp;&emsp;在某些情况下，这个自动解压缩的功能非常有用，比如官方镜像 `ubuntu` 中：
-```
+```Dockerfile
 FROM scratch
 ADD ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /
 ...
 ```
 &emsp;&emsp;因此在 `COPY` 和 `ADD` 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 `COPY` 指令，仅在需要自动解压缩的场合使用 `ADD`。
+### CMD
+`CMD` 指令的格式和 `RUN` 相似，也是两种格式：
+
+- shell 格式：CMD <命令>
+- exec 格式：CMD ["可执行文件", "参数1", "参数2"...]
+- 参数列表格式：CMD ["参数1", "参数2"...]。在指定了 ENTRYPOINT 指令后，用 CMD 指定具体的参数。
 
 
+&emsp;&emsp;之前介绍容器的时候曾经说过，Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。CMD 指令就是用于指定默认的容器主进程的启动命令的。
+
+&emsp;&emsp;如果使用 shell 格式的话，实际的命令会被包装为 sh -c 的参数的形式进行执行。比如：
+```Dockerfile
+FROM ubuntu:latest
+RUN apt-get update \
+	&& apt-get install -y curl \
+	&& rm -rf /var/lib/apt/lists/*
+CMD curl cip.cc     /等价于 CMD ["curl","-s","cip.cc"]
+
+```
+&emsp;&emsp;最后的`CMD curl cip.cc `在实际的执行中会将其变为：
+
+&emsp;&emsp;`CMD [ "sh", "-c", "curl cip.cc" ]`,也就是说主进程实际上是 `sh`。那么当 `curl cip.cc` 命令结束后，`sh` 也就结束了，`sh` 作为主进程退出了，自然就会令容器退出。
+```
+docker build -t curl .     //构建新的镜像命名为curl
+```
+```shell
+$ docker run --rm curl:latest          
+IP	: 153.3.0.xx
+地址	: 中国 xx  xx
+运营商	: 联通
+
+数据二	: 江苏省xx市 | 联通
+
+数据三	: 中国江苏省xx市 | 联通
+
+URL	: http://www.cip.cc/153.3.0.xx
+
+```
+&emsp;&emsp;那如果我们想在后面加个参数`-i`,希望显示 HTTP 头信息，直接在`docker run`的后面加能行吗？
+```
+$ docker run --rm curl:latest -i          
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "exec: \"-i\": executable file not found in $PATH": unknown.
+```
+&emsp;&emsp;但是我们可以这样，在镜像后面敲出完整的指令，<font color='Violet' size=3px>因为跟在镜像名后面的是 `command`，运行时会替换 `CMD` 的默认值。</font>因此这里的 `curl -s cip.cc -i` 替换了原来的 `CMD`，而原来的`-i`根本就不是合法的命令，所以自然找不到。
+```
+$ docker run --rm curl:latest curl -s cip.cc -i
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 18 Nov 2018 11:23:18 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-cip-c: H
+
+IP	: 153.3.0.xx
+地址	: 中国 xx  xx
+运营商	: 联通
+
+数据二	: 江苏省xx市 | 联通
+
+数据三	: 中国江苏省xx市 | 联通
+
+URL	: http://www.cip.cc/153.3.0.xx
+```
+&emsp;&emsp;那如果想不输入完整的指令，而想直接加个参数，如加个`-i`就可以显示 HTTP 头信息，该怎么办呢？那就要用到下一个命令`ENTRYPOINT` 入口点了
+
+### ENTRYPOINT 入口点
+&emsp;&emsp;当指定了 `ENTRYPOINT` 后，`CMD` 的含义就发生了改变，不再是直接的运行其命令，而是将 `CMD` 的内容作为参数传给 `ENTRYPOINT` 指令，换句话说实际执行时，将变为：
+```
+<ENTRYPOINT> "<CMD>"    //命令变为参数传给ENTRYPOINT
+```
+&emsp;&emsp;还是举前面的查公网IP的例子，将Dockerfile更改为：
+```Dockerfile
+FROM ubuntu:latest
+RUN apt-get update \
+	&& apt-get install -y curl \
+	&& rm -rf /var/lib/apt/lists/*
+ENTRYPOINT ["curl","-s","cip.cc"]
+```
+&emsp;&emsp;`build` 镜像命名为`curl_entrypoint`,运行
+```
+$ docker run --rm curl_entrypoint:latest           
+IP	: 153.3.0.xx
+地址	: 中国 xx  xx
+运营商	: 联通
+
+数据二	: 江苏省xx市 | 联通
+
+数据三	: 中国江苏省xx市 | 联通
+
+URL	: http://www.cip.cc/153.3.0.xx
+
+```
+&emsp;&emsp;那么加上参数`-i`呢？
+```
+$ docker run --rm curl_entrypoint:latest -i
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 18 Nov 2018 11:57:40 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-cip-c: H
+
+IP	: 153.3.0.xx
+地址	: 中国 xx  xx
+运营商	: 联通
+
+数据二	: 江苏省xx市 | 联通
+
+数据三	: 中国江苏省xx市 | 联通
+
+URL	: http://www.cip.cc/153.3.0.xx
+```
+&emsp;&emsp;由此可以看出`CMD`命令和`ENTRYPOINT`入口点的区别
+
+### ENV 设置环境变量
+&emsp;&emsp;这个指令很简单，就是设置环境变量而已，无论是后面的其它指令，如 RUN，还是运行时的应用，都可以直接使用这里定义的环境变量。
+```
+ENV <key> <value>
+eg:ENV NODE_VERSION 7.2.0
+ENV <key1>=<value1> <key2>=<value2>...
+eg:ENV VERSION=1.0 DEBUG=on NAME="Happy Feet"
+```
+### VOLUME 定义匿名卷
+&emsp;&emsp;之前我们说过，容器运行时应该尽量保持容器存储层不发生写操作，对于数据库类需要保存动态数据的应用，其数据库文件应该保存于卷(volume)中，后面的章节我们会进一步介绍 Docker 卷的概念。为了防止运行时用户忘记将动态文件所保存目录挂载为卷，在 Dockerfile 中，我们可以事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据。
+```Dockerfile
+VOLUME /data
+```
+### EXPOSE 声明端口
+```Dockerfile
+格式为 EXPOSE <端口1> [<端口2>...]。
+```
+&emsp;&emsp;`EXPOSE` 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务。在 `Dockerfile` 中写入这样的声明有两个好处，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个用处则是在运行时使用随机端口映射时，也就是 `docker run -P` 时，会自动随机映射 `EXPOSE` 的端口。
+
+&emsp;&emsp;要将 `EXPOSE` 和在运行时使用 `-p <宿主端口>:<容器端口>` 区分开来。-p，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 `EXPOSE` 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。
+
+
+TODO:DOCKER 网络
+
+
+ 
 
 
 

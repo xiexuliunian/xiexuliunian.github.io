@@ -520,8 +520,28 @@ VOLUME /data
 &emsp;&emsp;要将 `EXPOSE` 和在运行时使用 `-p <宿主端口>:<容器端口>` 区分开来。-p，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 `EXPOSE` 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。
 
 
-TODO:DOCKER 网络
+## 7.挂载主机目录
+&emsp;&emsp;使用 `--mount` 标记可以指定挂载一个本地主机的目录到容器中去。
+```docker
+$ docker run -d -P \
+    --name web \
+    # -v /src/webapp:/opt/webapp \
+    --mount type=bind,source=/src/webapp,target=/opt/webapp \
+    training/webapp \
+    python app.py
+```
+&emsp;&emsp;使用`-v /src/webapp:/opt/webapp`是之前的一种挂载的方法。上面的命令加载主机的 /src/webapp 目录到容器的 /opt/webapp目录。这个功能在进行测试的时候十分方便，比如用户可以放置一些程序到本地目录中，来查看容器是否正常工作。本地目录的路径必须是绝对路径，以前使用 -v 参数时如果本地目录不存在 Docker 会自动为你创建一个文件夹，现在使用 --mount 参数时如果本地目录不存在，Docker 会报错。
 
+&emsp;&emsp;Docker 挂载主机目录的默认权限是<font color='Violet' size=3px>读写</font>，用户也可以通过增加 readonly 指定为 <font color='Violet' size=3px>只读</font>。
+```docker
+$ docker run -d -P \
+    --name web \
+    # -v /src/webapp:/opt/webapp:ro \
+    --mount type=bind,source=/src/webapp,target=/opt/webapp,readonly \
+    training/webapp \
+    python app.py
+```
+&emsp;&emsp;这样权限就变为只读了，在容器内部创建文件会报错。
 
  
 

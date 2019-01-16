@@ -43,4 +43,15 @@ if __name__ == "__main__":
     #第二种方法
     print("data mean: %s" % (np.mean(train_dataset.train_data, axis=(0, 1, 2)) / 255))
     print("data std: %s" % (np.std(train_dataset.train_data, axis=(0, 1, 2)) / 255))
+
+
+
+# cuda:0
+# Files already downloaded and verified
+# ==> Computing mean and std..
+# tensor([0.4914, 0.4822, 0.4465])
+# tensor([0.2023, 0.1994, 0.2010])
+# (50000, 32, 32, 3)
+# data mean: [0.49139968 0.48215841 0.44653091]
+# data std: [0.24703223 0.24348513 0.26158784]
 ```

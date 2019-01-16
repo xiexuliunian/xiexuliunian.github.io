@@ -1,7 +1,7 @@
 ---
 title: 计算数据集的mean和std
 date: 2019-01-16 20:38:33
-tags: 深度学习
+categories: 深度学习
 ---
 # <center>计算数据集的mean和std</center>
 &emsp;&emsp;经常我们要对数据集进行`标准化操作`，需要减去均值`mean`，除以标准差`std`,那就需要先计算出整个数据集的均值和标准差。下列代码给出两种方法。

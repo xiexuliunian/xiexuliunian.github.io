@@ -46,6 +46,7 @@ from mxnet import autograd,nd
 x=nd.arange(1,13).reshape((3,4))
 print(x)
 x.attach_grad()
+#mxnet中默认关闭梯度，在此打开
 with autograd.record():
     y=x**2+4*x
     z=2*y+3
@@ -75,6 +76,7 @@ print(x.grad)
 ```python
 import torch
 import numpy as np
+#指示x需要梯度
 x=torch.tensor(np.arange(1,13).reshape(3,4),dtype=torch.float32,requires_grad=True)
 print(x)
 y=x**2+4*x

@@ -9,5 +9,5 @@ categories: 深度学习
 &emsp;&emsp;首先来看一副没有经过极大值抑制的人脸检测的图片。
 
 <div style="width: 60%; margin: auto">
-<center>{% asset_img 1.png [人脸检测图片] %}</center>
+<center>{% asset_img 111.png [人脸检测图片] %}</center>
 </div>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="faster rcnn重读记录"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>faster rcnn重读记录 - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/02/27/faster-rcnn重读记录/">
+                faster rcnn重读记录
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-27</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/论文/">论文</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="faster-rcnn重读记录笔记"><a href="#faster-rcnn重读记录笔记" class="headerlink" title="faster rcnn重读记录笔记"></a><center>faster rcnn重读记录笔记</center></h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>&emsp;&emsp;年纪大了，之前看的好多文章，都忘得差不多了。深刻的明白了好记性不如烂笔头，现在看文章，准备记录下来，已备后来查阅。</p>
+<h2 id="0-Abstract"><a href="#0-Abstract" class="headerlink" title="0 Abstract"></a>0 Abstract</h2><p>&emsp;&emsp;现在最先进的目标检测网络需要依赖<code>区域提出算法</code>假定目标的位置。SPPNET和FAST_RCNN已经缩短了检测网络的运行时间，暴露出区域提出计算的瓶颈。本文提出<code>区域提出网络(Region Proposal Network)</code>和检测网络共享全图像的卷积特征，因此做到几乎零消耗的区域提出效果。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h2><p>&emsp;&emsp;<code>SS(selective search)</code>是总多流行的区域提出方法之一，然而跟高效的检测网络相比落后一个数量级，在CPU的处理一张图片需要2秒。<code>EdgeBoxes</code>每张图片需要花费0.2秒，然而区域提出这一步花费的时间仍然跟检测网络一致。</p>
+<p>&emsp;&emsp;采用GPU加速实现的区域提出方法是工程上有效的解决方案，但是这种重新实现忽略了下游的检测网络，错过了共享计算的重要机会。</p>
+<p>&emsp;&emsp;我们发现在基于区域的检测器中用到的卷积特征也可以被用来生成区域建议网络。在这些卷积特征顶层，我们组建RPN通过添加一些额外的卷积层同时回归边界框和目标的概率在每个常见的单元的位置。</p>
+<h2 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2 Related Work"></a>2 Related Work</h2><p>&emsp;&emsp;广泛使用的目标提出方法包括基于超像素分组的方法(如SS,CPMC,MCG)和基于滑动窗口的方法(如EdgeBoxes)。目标提出方法在检测中充当一个独立的外部模块。</p>
+<p>&emsp;&emsp;RCNN方法端到端的训练CNNs来对产生的区域进行判断是否包含物体或是背景。RCNN主要充当一个分类器，它不预测物体的边界框(除了refining边界框回归)。它的准确率取决于区域建议模块的表现。</p>
+<h2 id="3-Faster-R-CNN"><a href="#3-Faster-R-CNN" class="headerlink" title="3 Faster R_CNN"></a>3 Faster R_CNN</h2><p>&emsp;&emsp;我们的检测系统，叫做Faster RCNN,由两部分组成。第一部分是用于区域建议的深度全卷积神经网络，第二部分是Fast RCNN检测器，它使用第一部分生成的建议区域。整个系统是一个简单、统一的目标检测网络。用最近在神经网络中很流行的术语注意力机制，RPN模块告诉Fast RCNN望哪里去看。</p>
+<h3 id="3-1-RPN网络"><a href="#3-1-RPN网络" class="headerlink" title="3.1 RPN网络"></a>3.1 RPN网络</h3><p>&emsp;&emsp;RPN以一副任意尺度的图片作为输入，输出一系列矩形的目标建议框，每一个都有一个目标的置信度。<br>&emsp;&emsp;为了生成区域建议框，我们在共享的卷积层输出的卷积特征上滑动一个小的卷积网络。这个小的卷积网络采用一个nxn的空间窗作为卷积特征图的输入。每一个滑动窗口映射到一个低维的特征。这个特征送给两个兄弟全连接层中——一个框回归层(reg)，一个框分类层(cls)。在本文中我们使用n=3，这个迷你的网络在某个位置上的图示如下图。注意因为迷你的网络是一种滑动窗口的操作，全连接层共享了所有的空间信息。这种分格很自然的采用nxn的卷积层后面跟两个1x1的兄弟卷积层来实现(分别为了回归和分类)。</p>
+<div style="width: 90%; margin: auto"><br><center><img src="/2019/02/27/faster-rcnn重读记录/1.jpg" title="图示"></center><br></div>
+
+<h4 id="3-1-1-Anchors"><a href="#3-1-1-Anchors" class="headerlink" title="3.1.1 Anchors"></a>3.1.1 Anchors</h4><p>&emsp;&emsp;在每个滑动窗口的位置，我们同时预测多个区域建议框，他们每个位置的最大可能的建议框数目记为<em>k</em>。那么回归层就有4<em>k</em>个输出表征了<em>k</em>个框的坐标，分类层就输出2<em>k</em>个分数分表代表了每个建议框是和不是一个目标的概率。<em>k</em>个建议框是参数为<em>k</em>的引用框，我们称为Anchors。anchor位于滑动窗口的中心，和长宽比和比例有关。默认情况下我们使用3种长宽比和3种比例，在每个滑动的位置产生9个anchors。对于尺度为WxH特征图来说，那总共就有<em>WHk</em>个anchors。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

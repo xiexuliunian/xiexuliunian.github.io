@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="计算数据集的mean和std"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>计算数据集的mean和std - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/16/计算数据集的mean和std/">
+                计算数据集的mean和std
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-01-16</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/深度学习/">深度学习</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="计算数据集的mean和std"><a href="#计算数据集的mean和std" class="headerlink" title="计算数据集的mean和std"></a><center>计算数据集的mean和std</center></h1><p>&emsp;&emsp;经常我们要对数据集进行<code>标准化操作</code>，需要减去均值<code>mean</code>，除以标准差<code>std</code>,那就需要先计算出整个数据集的均值和标准差。下列代码给出两种方法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torchvision.datasets <span class="keyword">as</span> dsets</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"></span><br><span class="line">device = torch.device(<span class="string">"cuda:0"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line">print(device)</span><br><span class="line"></span><br><span class="line"><span class="comment"># CIFAR-10数据集</span></span><br><span class="line">train_dataset = dsets.CIFAR10(</span><br><span class="line">    root=<span class="string">"./data/"</span>, train=<span class="keyword">True</span>, transform=transforms.ToTensor(), download=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mean_and_std</span><span class="params">(dataset)</span>:</span></span><br><span class="line">    <span class="string">'''Compute the mean and std value of dataset.'''</span></span><br><span class="line">    dataloader = torch.utils.data.DataLoader(dataset, batch_size=<span class="number">1</span>, shuffle=<span class="keyword">True</span>, num_workers=<span class="number">2</span>)</span><br><span class="line">    mean = torch.zeros(<span class="number">3</span>)</span><br><span class="line">    std = torch.zeros(<span class="number">3</span>)</span><br><span class="line">    print(<span class="string">'==&gt; Computing mean and std..'</span>)</span><br><span class="line">    <span class="keyword">for</span> inputs, targets <span class="keyword">in</span> dataloader:</span><br><span class="line">        <span class="comment"># 3通道</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            mean[i] += inputs[:, i, :, :].mean()</span><br><span class="line">            std[i] += inputs[:, i, :, :].std()</span><br><span class="line">    mean.div_(len(dataset))</span><br><span class="line">    std.div_(len(dataset))</span><br><span class="line">    <span class="keyword">return</span> mean, std</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment">#第一种方法</span></span><br><span class="line">    mean, std = get_mean_and_std(train_dataset);</span><br><span class="line">    print(mean, std, sep=<span class="string">'\n'</span>)</span><br><span class="line">    print(train_dataset.train_data.shape)</span><br><span class="line">    <span class="comment">#第二种方法</span></span><br><span class="line">    print(<span class="string">"data mean: %s"</span> % (np.mean(train_dataset.train_data, axis=(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)) / <span class="number">255</span>))</span><br><span class="line">    print(<span class="string">"data std: %s"</span> % (np.std(train_dataset.train_data, axis=(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)) / <span class="number">255</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># cuda:0</span></span><br><span class="line"><span class="comment"># Files already downloaded and verified</span></span><br><span class="line"><span class="comment"># ==&gt; Computing mean and std..</span></span><br><span class="line"><span class="comment"># tensor([0.4914, 0.4822, 0.4465])</span></span><br><span class="line"><span class="comment"># tensor([0.2023, 0.1994, 0.2010])</span></span><br><span class="line"><span class="comment"># (50000, 32, 32, 3)</span></span><br><span class="line"><span class="comment"># data mean: [0.49139968 0.48215841 0.44653091]</span></span><br><span class="line"><span class="comment"># data std: [0.24703223 0.24348513 0.26158784]</span></span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

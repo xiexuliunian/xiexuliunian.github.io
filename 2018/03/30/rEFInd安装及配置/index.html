@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="rEFInd安装及配置"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>rEFInd安装及配置 - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/03/30/rEFInd安装及配置/">
+                rEFInd安装及配置
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-30</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/linux/">linux</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="rEFInd安装及配置"><a href="#rEFInd安装及配置" class="headerlink" title="rEFInd安装及配置"></a><center>rEFInd安装及配置</center></h1><h2 id="注意-rEFInd引导项仅支持EFI引导模式，对传统的BIOS引导不支持"><a href="#注意-rEFInd引导项仅支持EFI引导模式，对传统的BIOS引导不支持" class="headerlink" title="注意  rEFInd引导项仅支持EFI引导模式，对传统的BIOS引导不支持"></a><code>注意</code>  rEFInd引导项仅支持EFI引导模式，对传统的BIOS引导不支持</h2><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>本机使用的是manjaro archlinux 发行版，在安装rEFInd上比较方便，直接 <a href="https://sourceforge.net/projects/refind/" title="这是rEFInd的源码连接" target="_blank" rel="noopener">源码</a>，得到一个<code>refind-bin-0.11.2.zip</code>的压缩包，解压后转到该文件夹下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x refind-install //为安装文件赋予权限</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./refind-install //安装</span><br></pre></td></tr></table></figure>
+<p>ok，就这么简单咯，就可以使用<code>rEFInd</code>接管丑陋的<code>grub</code>开机引导界面了</p>
+<h2 id="2-主题美化"><a href="#2-主题美化" class="headerlink" title="2.主题美化"></a>2.主题美化</h2><p>然而我们发现基本的rEFInd引导界面也不是很好看，为它换个主题吧。看中了这个主题。<a href="https://github.com/EvanPurkhiser/rEFInd-minimal" title="这是该主题的github页面" target="_blank" rel="noopener">github页面</a></p>
+<center><img src="/2018/03/30/rEFInd安装及配置/1.png" title="说明"></center>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><blockquote>
+<p>1.安装好rEFInd后，首先定位到计算机的refind EFI目录，一般在<code>/boot/EFI/refind（注意进入到该目标需要首先进入管理员身份su才行)目录下</code></p>
+<p>2.在该文件夹下建立<code>themes</code>文件夹</p>
+<p>3.将该主题<code>clone</code>到<code>themes</code>文件夹,在<code>themes</code>文件夹下输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/EvanPurkhiser/rEFInd-minimal.git</span><br></pre></td></tr></table></figure></p>
+<p>4.为了使该主题生效，需要将<code>include themes/rEFInd-minimal/theme.conf</code>语句添加到配置文件<code>refind.conf</code>中去</p>
+</blockquote>
+<p>ok,重启吧。看看新的主题。</p>
+<h2 id="3-rEFInd-卸载"><a href="#3-rEFInd-卸载" class="headerlink" title="3. rEFInd 卸载"></a>3. rEFInd 卸载</h2><p>想卸载rEFInd，没问题，很简单哟。在管理员权限下运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -r /boot/efi/EFI/refind</span><br></pre></td></tr></table></figure></p>
+<p>重启你就会看到久违的grub引导界面</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

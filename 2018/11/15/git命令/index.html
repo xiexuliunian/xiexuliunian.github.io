@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="git命令"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>git命令 - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/11/15/git命令/">
+                git命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-11-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/技术工具/">技术工具</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a><center>git常用命令</center></h1><ul>
+<li>以下是一些学习工作中常用的git操作，以供记录使用。</li>
+</ul>
+<h2 id="1-初始化仓库"><a href="#1-初始化仓库" class="headerlink" title="1.初始化仓库"></a>1.初始化仓库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>在当前目录下创建.git目录，同时当前目录成为一个Git仓库,意味着当前目录下的文件状态的改变，会被git记录</p>
+<h2 id="2-从远程仓库克隆"><a href="#2-从远程仓库克隆" class="headerlink" title="2.从远程仓库克隆"></a>2.从远程仓库克隆</h2><p><code>git clone [git仓库url]</code>将http或ssh链接指向的Git仓库拷贝到本地，默认是master分支。</p>
+<p><code>git clone -b [分支名] [git仓库url]</code>则克隆的是该分支的仓库内容。</p>
+<h2 id="3-增加、注释操作"><a href="#3-增加、注释操作" class="headerlink" title="3.增加、注释操作"></a>3.增加、注释操作</h2><p>有很多的工具可以更方便的添加和注释，不必要非要使用代码。</p>
+<h2 id="4-当前状态"><a href="#4-当前状态" class="headerlink" title="4.当前状态"></a>4.当前状态</h2><p><code>git status</code>：显示当前仓库的最新状态。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">位于分支 hexo</span><br><span class="line">您的分支与上游分支 &apos;origin/hexo&apos; 一致。</span><br><span class="line"></span><br><span class="line">尚未暂存以备提交的变更：</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 更新要提交的内容）</span><br><span class="line">  （使用 &quot;git checkout -- &lt;文件&gt;...&quot; 丢弃工作区的改动）</span><br><span class="line"></span><br><span class="line">	修改：     db.json</span><br><span class="line">	修改：     package-lock.json</span><br><span class="line">	修改：     package.json</span><br><span class="line"></span><br><span class="line">未跟踪的文件:</span><br><span class="line">  （使用 &quot;git add &lt;文件&gt;...&quot; 以包含要提交的内容）</span><br><span class="line"></span><br><span class="line">	&quot;source/_posts/git\345\221\275\344\273\244.md&quot;</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 &quot;git add&quot; 和/或 &quot;git commit -a&quot;）</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-git日志"><a href="#5-git日志" class="headerlink" title="5.git日志"></a>5.git日志</h2><p><code>git log</code>：显示从最近到最远的提交日志。包含每个提交的SHA1校验和、作者的名字和邮箱、提交时间以及提交说明等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">commit 67c8e0708bb198789df2896dfb47dcb27db7c564</span><br><span class="line">Author: xiexuliunian &lt;zzuzxd@126.com&gt;</span><br><span class="line">Date:   Fri Oct 26 21:14:49 2018 +0800</span><br><span class="line"></span><br><span class="line">    添加CI</span><br><span class="line"></span><br><span class="line">commit 918fa11a2a6f43736ea2716e5458b611d8998e22</span><br><span class="line">Merge: e2cb954 bd6c67c</span><br><span class="line">Author: xiexuliunian &lt;zzuzxd@126.com&gt;</span><br><span class="line">Date:   Fri Oct 26 20:33:42 2018 +0800</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-拉取操作"><a href="#6-拉取操作" class="headerlink" title="6.拉取操作"></a>6.拉取操作</h2><p><code>git pull</code>:拉取远程仓库最新提交，并合并到指定的本地分支上。</p>
+<p><code>git fetch</code>:拉取远程仓库最新提交，但不会自动合并分支。</p>
+<h2 id="7-推送操作"><a href="#7-推送操作" class="headerlink" title="7.推送操作"></a>7.推送操作</h2><p><code>git push</code>：将本地分支更改推送到远程仓库。</p>
+<p>如果你是一个人这个操作，一般不会有问题，但是如果是多人协作一个项目，这一步很可能会有问题，原因是别人更新的新代码，你本地没有，因此下面操作是每次<code>push</code>前尽量遵循的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git stash       //暂存你本地的所有更改，使本地相对与上次pull是一个干净的环境。</span><br><span class="line">git pull        //拉取远程的仓库。</span><br><span class="line">git stash pop   //在上次拉取的新的代码上合并暂存的代码。</span><br><span class="line">git push        /现在你就可以放心的push代码了。</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-当你push出错的时候"><a href="#8-当你push出错的时候" class="headerlink" title="8.当你push出错的时候"></a>8.当你push出错的时候</h2><p>当多人合作时，如果你push之前没有pull那么你很有可能会遇到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;https://github.com/dummymare/Hello-World.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>git pull --rebase</code>：–rebase的作用是取消掉本地库中刚刚的commit，并把他们接到更新后的版本库之中。</p>
+<p>常用的解决方案是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git stash           </span><br><span class="line">git pull --rebase   </span><br><span class="line">git stash pop       </span><br><span class="line">git push</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

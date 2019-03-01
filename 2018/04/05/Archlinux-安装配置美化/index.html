@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Archlinux 安装配置美化"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Archlinux 安装配置美化 - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/04/05/Archlinux-安装配置美化/">
+                Archlinux 安装配置美化
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-04-05</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/linux/">linux</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="Archlinux-安装配置美化"><a href="#Archlinux-安装配置美化" class="headerlink" title="Archlinux 安装配置美化"></a><center>Archlinux 安装配置美化</center></h1><h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p>很早之前，大概两三年前吧，第一次听说Archlinux,于是弄了个虚拟机开始了装机之路，折腾了两天，总算在虚拟机第一次装成功了，但是完成之后，记得使用的是gnome的桌面，什么都不会配置，一看这是什么呀，这么丑，哈哈是的仅仅是看看Archlinux完成之后是什么样子，结果大失所望，这比ubuntu的桌面还不如，折腾了两天是图啥呀，于是不再这上面投入时间了。前些天装了个manjaro的linux系统是基于Archlinux的发行版，虽然遇到点困难，但完成后给我真的是一种惊艳的感觉，操作感真的是棒棒哒，但是当我敲出<code>screenfetch</code>出现的是类似小米的丑陋图标时，我觉得既然manjaro是基于Archlinux的给人一种耳目一新的感觉，为什么我不从头开始搭建一个Archlinux，然后配置成类似的样子呢，所以一切是为了得到一张牛逼的图片，哈哈。</p>
+<center><img src="/2018/04/05/Archlinux-安装配置美化/1.png" title="说明"></center>
+
+<h2 id="1-系统安装"><a href="#1-系统安装" class="headerlink" title="1. 系统安装"></a>1. 系统安装</h2><h2 id="注意：本机为GPT-UEFI类型"><a href="#注意：本机为GPT-UEFI类型" class="headerlink" title="注意：本机为GPT+UEFI类型"></a>注意：本机为GPT+UEFI类型</h2><p>一切从下图开始</p>
+<center><img src="/2018/04/05/Archlinux-安装配置美化/2.gif" title="说明"></center>
+
+
+<h2 id="设置键盘布局"><a href="#设置键盘布局" class="headerlink" title="设置键盘布局"></a>设置键盘布局</h2><p>ArchISO 默认键盘布局为 US（美式键盘）。<br>如需修改键盘布局请使用 loadkeys 命令。<br>如需修改字体请使用 setfont 命令。</p>
+<h2 id="网络连接"><a href="#网络连接" class="headerlink" title="网络连接"></a>网络连接</h2><p>ArchISO 在启动时会尝试连接网络，可通过命令 ping 查看连接是否已建立。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 4 www.baidu.com</span><br></pre></td></tr></table></figure></p>
+<center><img src="/2018/04/05/Archlinux-安装配置美化/3.gif" title="说明"></center>
+
+<p>若网络尚未连接，请先接入网络。若使用 WiFi 连接，请使用 wifi-menu 命令。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wifi-menu</span><br></pre></td></tr></table></figure></p>
+<h2 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h2><p>同步时间以确保时间准确无误：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-ntp true</span><br></pre></td></tr></table></figure></p>
+<h2 id="选择软件仓库服务器"><a href="#选择软件仓库服务器" class="headerlink" title="选择软件仓库服务器"></a>选择软件仓库服务器</h2><blockquote>
+<p>该配置不仅会应用到安装环境，也会应用至新系统中。</p>
+</blockquote>
+<p>选择地理位置最为接近的镜像服务器以获得更高的下载速度。pacman 优先使用位置靠前的镜像地址。将选定的镜像地址置于最前以便 pacman 使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+<ol>
+<li>[F6] 搜索 china</li>
+<li>[方向键] 移动光标至 Server 行</li>
+<li>[CTRL+K] 剪切该行</li>
+<li>[方向键] 移动光标至其他 Server 行前</li>
+<li>[CTRL+U] 粘贴至此行</li>
+<li>[CTRL+O] 保存，[回车键] 确定</li>
+<li>[CTRL+X] 推出<center><img src="/2018/04/05/Archlinux-安装配置美化/4.gif" title="说明"></center>
+
+</li>
+</ol>
+<blockquote>
+<p>本文选择zzu镜像<br><code>Server = http://mirrors.zzu.edu.cn/archlinux/$repo/os/$arch</code>比较快一点</p>
+</blockquote>
+<h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><h2 id="这是最关键的地方之一"><a href="#这是最关键的地方之一" class="headerlink" title="这是最关键的地方之一"></a>这是最关键的地方之一</h2><h2 id="分区方案"><a href="#分区方案" class="headerlink" title="分区方案"></a>分区方案</h2><ul>
+<li><p>Arch Linux 要求至少一个分区分配给根目录 /。</p>
+</li>
+<li><p>在 UEFI 系统上，需要一个 UEFI 系统分区。(由于本文是双系统，Windows上已有该分区在/dev/sda2上)</p>
+</li>
+</ul>
+<p>在本文的安装中，空闲磁盘100GB,分区如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Linux Swap</th>
+<th style="text-align:center">8GB</th>
+<th style="text-align:right">/dev/sda9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:center">42GB</td>
+<td style="text-align:right">/dev/sda10</td>
+</tr>
+<tr>
+<td style="text-align:left">home</td>
+<td style="text-align:center">50GB</td>
+<td style="text-align:right">/dev/sda11</td>
+</tr>
+</tbody>
+</table>
+<p>使用gdisk很好对系统进行分区。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdisk /dev/sda</span><br></pre></td></tr></table></figure></p>
+<h2 id="格式化（创建文件系统）"><a href="#格式化（创建文件系统）" class="headerlink" title="格式化（创建文件系统）"></a>格式化（创建文件系统）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkswap /dev/sda9</span><br><span class="line">mkfs.ext4 /dev/sda10</span><br><span class="line">mkfs.ext4 /dev/sda11</span><br></pre></td></tr></table></figure>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda10 /mnt</span><br><span class="line">mkdir /mnt/home</span><br><span class="line">mkdir /mnt/boot/efi</span><br><span class="line">mount /dev/sda2 /mnt/boot/efi</span><br><span class="line">mount /dev/sda11 /mnt/home</span><br><span class="line"></span><br><span class="line">swapon /dev/sda9</span><br></pre></td></tr></table></figure>
+<h2 id="安装基础包"><a href="#安装基础包" class="headerlink" title="安装基础包"></a>安装基础包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel</span><br></pre></td></tr></table></figure>
+<h2 id="生成分区表"><a href="#生成分区表" class="headerlink" title="生成分区表"></a>生成分区表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<h2 id="接着使用-arch-chroot-进入新系统。"><a href="#接着使用-arch-chroot-进入新系统。" class="headerlink" title="接着使用 arch-chroot 进入新系统。"></a>接着使用 arch-chroot 进入新系统。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt /bin/bash</span><br></pre></td></tr></table></figure>
+<h2 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
+<h2 id="区域设置"><a href="#区域设置" class="headerlink" title="区域设置"></a>区域设置</h2><p>进行区域设置以正确显示本地文字、货币、时间与时期格式以及其它本地相关标准。<br>编辑 /etc/locale.gen，去掉需要的 locale 的注释（行头的字符 #）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/locale.gen</span><br></pre></td></tr></table></figure>
+<p>取消<code>en_US.UTF-8 UTF-8</code>上的注释，然后使用 locale-gen 生成 locale。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure></p>
+<p>接着使用以下命令设置默认 locale。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</span><br></pre></td></tr></table></figure></p>
+<h2 id="硬件时间设置"><a href="#硬件时间设置" class="headerlink" title="硬件时间设置"></a>硬件时间设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hwclock --systohc --utc</span><br></pre></td></tr></table></figure>
+<h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo zxd &gt; /etc/hostname</span><br></pre></td></tr></table></figure>
+<p>接着向 /etc/hosts 文件添加 hosts 条目。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#&lt;ip-address&gt;	&lt;hostname.domain.org&gt;	&lt;hostname&gt;</span><br><span class="line">127.0.0.1	localhost.localdomain	localhost</span><br><span class="line">::1		localhost.localdomain   localhost</span><br><span class="line">127.0.1.1	zxd.localdomain	        zxd</span><br></pre></td></tr></table></figure></p>
+<h2 id="随机盘环境初始化"><a href="#随机盘环境初始化" class="headerlink" title="随机盘环境初始化"></a>随机盘环境初始化</h2><p>可能会有一些提示信息，安装过显卡驱动就可一了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkinitcpio -p linux</span><br></pre></td></tr></table></figure></p>
+<h2 id="为-root-用户设置密码"><a href="#为-root-用户设置密码" class="headerlink" title="为 root 用户设置密码"></a>为 root 用户设置密码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<h2 id="设置网络连接"><a href="#设置网络连接" class="headerlink" title="设置网络连接"></a>设置网络连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S iw wpa_supplicant networkmanager dialog</span><br><span class="line"></span><br><span class="line">systemctl enable NetworkManager</span><br></pre></td></tr></table></figure>
+<h2 id="安装引导程序"><a href="#安装引导程序" class="headerlink" title="安装引导程序"></a>安装引导程序</h2><p>本文推荐 GRUB 作为引导程序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu grub efibootmgr</span><br><span class="line">pacman -Syu efibootmgr</span><br><span class="line">grub-mkconfig -o boot/grub/grub.cfg</span><br><span class="line">grub-install /dev/sda</span><br></pre></td></tr></table></figure></p>
+<h2 id="退出Chroot"><a href="#退出Chroot" class="headerlink" title="退出Chroot"></a>退出Chroot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">unount -R /mnt</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h1 id="ok，到此我们已经得到了命令行版的Archlinux"><a href="#ok，到此我们已经得到了命令行版的Archlinux" class="headerlink" title="ok，到此我们已经得到了命令行版的Archlinux"></a>ok，到此我们已经得到了命令行版的Archlinux</h1>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

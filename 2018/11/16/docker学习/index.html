@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="docker学习"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>docker学习 - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/11/16/docker学习/">
+                docker学习
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-11-16</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/技术工具/">技术工具</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>&emsp;&emsp;现今容器化技术对于技术行业的改变是非常巨大的，特别是对于企业来说，因此学习掌握容器化技术的基础是非常必要的。</p>
+<h2 id="1-docker安装"><a href="#1-docker安装" class="headerlink" title="1.docker安装"></a>1.docker安装</h2><p>&emsp;&emsp;本文使用manjaro(Archlinux)系linux系统，由于有pacman、yaour管理软件包的加持，加上manjaro的图形化前端pamac,如下图</p>
+<div style="width: 80%; margin: auto"><br><center><img src="/2018/11/16/docker学习/1.png" title="说明"></center><br></div>
+
+<p>&emsp;&emsp;安装docker，nvidia-docker只需要点安装即可，当然前提是你要有个好的网络，接下来会写一篇讲如何在linux下使用全局代理的博文，以备不时之需。</p>
+<h3 id="建立docker用户组"><a href="#建立docker用户组" class="headerlink" title="建立docker用户组"></a>建立docker用户组</h3><p>&emsp;&emsp;默认情况下，<code>docker</code>命令会使用 <code>Unix socket</code>与 <code>Docker</code>引擎通讯。而只有 <code>root</code> 用户和 <code>docker</code> 组的用户才可以访问 Docker 引擎的 <code>Unix socket</code>。出于安全考虑，一般 Linux 系统上不会直接使用 <code>root</code> 用户。因此，更好地做法是将需要使用 docker 的用户加入 <code>docker</code> 用户组。</p>
+<p>建立<code>docker</code>组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure></p>
+<p>将当前用户加入<code>docker</code>组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker $USER</span><br></pre></td></tr></table></figure></p>
+<p>退出当前终端并重新登录，进行如下测试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure></p>
+<p>正常情况下你会得到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> 3. The Docker daemon created a new container from that image which runs the</span><br><span class="line">    executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, which sent it</span><br><span class="line">    to your terminal.</span><br><span class="line">To try something more ambitious, you can run an Ubuntu container with:</span><br><span class="line"> $ docker run -it ubuntu bash</span><br><span class="line">Share images, automate workflows, and more with a free Docker ID:</span><br><span class="line"> https://hub.docker.com/</span><br><span class="line">For more examples and ideas, visit:</span><br><span class="line"> https://docs.docker.com/get-started/</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-遇到的第一个问题"><a href="#2-遇到的第一个问题" class="headerlink" title="2.遇到的第一个问题"></a>2.遇到的第一个问题</h2><p>但是你很有可能会得到：</p>
+<blockquote>
+<p>Cannot connect to the Docker daemon at unix:/var/run/docker.sock. Is the docker daemon running?</p>
+</blockquote>
+<p>&emsp;&emsp;这是肿么回事呢？<font color="Violet" size="3px">因为你只是安装了docker服务，但是没有启动呀!</font></p>
+<h3 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h3><p><code>sudo systemctl start docker</code>:  启动docker服务</p>
+<p><code>sudo systemctl enable docker</code>: <strong>开机启动docker服务</strong></p>
+<p>&emsp;&emsp;再运行之前的命令就没有什么问题了，当然前提是你有一个好的网络，那如果网络不好，怎么知道我有没有安装启动好服务呢？</p>
+<p><code>docker info</code>命令可以显示出当前的docker环境的一些信息，若显示正常，那应该没什么问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">$ docker info           </span><br><span class="line">Containers: 3</span><br><span class="line"> Running: 0</span><br><span class="line"> Paused: 0</span><br><span class="line"> Stopped: 3</span><br><span class="line">Images: 2</span><br><span class="line">Server Version: 18.09.0-ce</span><br><span class="line">Storage Driver: overlay2</span><br><span class="line"> Backing Filesystem: extfs</span><br><span class="line"> Supports d_type: true</span><br><span class="line"> Native Overlay Diff: false</span><br><span class="line">Logging Driver: json-file</span><br><span class="line">Cgroup Driver: cgroupfs</span><br><span class="line">Plugins:</span><br><span class="line"> Volume: local</span><br><span class="line"> Network: bridge host macvlan null overlay</span><br><span class="line"> Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog</span><br><span class="line">Swarm: inactive</span><br><span class="line">Runtimes: nvidia runc</span><br><span class="line">Default Runtime: nvidia</span><br><span class="line">Init Binary: docker-init</span><br><span class="line">containerd version: 9f2e07b1fc1342d1c48fe4d7bbb94cb6d1bf278b.m</span><br><span class="line">runc version: 4fc53a81fb7c994640722ac585fa9ca548971871-dirty</span><br><span class="line">init version: fec3683</span><br><span class="line">Security Options:</span><br><span class="line"> seccomp</span><br><span class="line">  Profile: default</span><br><span class="line">Kernel Version: 4.14.80-1-MANJARO</span><br><span class="line">Operating System: Manjaro Linux</span><br><span class="line">OSType: linux</span><br><span class="line">Architecture: x86_64</span><br><span class="line">CPUs: 8</span><br><span class="line">Total Memory: 15.6GiB</span><br><span class="line">Name: zxd</span><br><span class="line">ID: JEYJ:QQXD:VSQ3:RRDA:ETZN:BEON:QFLV:UWUY:YRYE:UTUE:7M5U:VM62</span><br><span class="line">Docker Root Dir: /var/lib/docker</span><br><span class="line">Debug Mode (client): false</span><br><span class="line">Debug Mode (server): false</span><br><span class="line">Registry: https://index.docker.io/v1/</span><br><span class="line">Labels:</span><br><span class="line">Experimental: false</span><br><span class="line">Insecure Registries:</span><br><span class="line"> 127.0.0.0/8</span><br><span class="line">Live Restore Enabled: false</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-镜像-容器-仓库"><a href="#3-镜像-容器-仓库" class="headerlink" title="3. 镜像 容器 仓库"></a>3. 镜像 容器 仓库</h2><h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>&emsp;&emsp;我们都知道，操作系统分为内核和用户空间。对于 Linux 而言，内核启动后，会挂载 root 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 root 文件系统。比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu 16.04 最小系统的 root 文件系统。</p>
+<p>&emsp;&emsp; 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<p>&emsp;&emsp;镜像构建时，会一层层构建，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。比如，删除前一层文件的操作，实际不是真的删除前一层的文件，而是仅在当前层标记为该文件已删除。在最终容器运行的时候，虽然不会看到这个文件，但是实际上该文件会一直跟随镜像。因此，在构建镜像的时候，需要额外小心，每一层尽量只包含该层需要添加的东西，任何额外的东西应该在该层构建结束前清理掉。</p>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p>&emsp;&emsp;镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+<p>&emsp;&emsp;容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的 命名空间。因此容器可以拥有自己的 root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户 ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。也因为这种隔离的特性，很多人初学 Docker 时常常会混淆容器和虚拟机。</p>
+<p>&emsp;&emsp;前面讲过镜像使用的是分层存储，容器也是如此。每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写而准备的存储层为容器存储层。</p>
+<p>&emsp;&emsp;容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</p>
+<p>&emsp;&emsp;按照 Docker 最佳实践的要求，容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化。所有的文件写入操作，都应该使用 数据卷（Volume）、或者绑定宿主目录，在这些位置的读写会跳过容器存储层，直接对宿主（或网络存储）发生读写，其性能和稳定性更高。</p>
+<p>&emsp;&emsp;数据卷的生存周期独立于容器，容器消亡，数据卷不会消亡。因此，使用数据卷后，容器删除或者重新运行之后，数据却不会丢失。</p>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p>&emsp;&emsp;镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务。</p>
+<p>&emsp;&emsp;一个 Docker Registry 中可以包含多个仓库（Repository）；每个仓库可以包含多个标签（Tag）；每个标签对应一个镜像。</p>
+<p>&emsp;&emsp;通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。我们可以通过 &lt;仓库名&gt;:&lt;标签&gt; 的格式来指定具体是这个软件哪个版本的镜像。如果不给出标签，将以 latest 作为默认标签。</p>
+<p>&emsp;&emsp;以 Ubuntu 镜像 为例，ubuntu 是仓库的名字，其内包含有不同的版本标签，如，14.04, 16.04。我们可以通过 ubuntu:14.04，或者 ubuntu:16.04 来具体指定所需哪个版本的镜像。如果忽略了标签，比如 ubuntu，那将视为 ubuntu:latest。</p>
+<p>&emsp;&emsp;仓库名经常以 两段式路径 形式出现，比如 jwilder/nginx-proxy，前者往往意味着 Docker Registry 多用户环境下的用户名，后者则往往是对应的软件名。但这并非绝对，取决于所使用的具体 Docker Registry 的软件或服务。</p>
+<h2 id="4-使用镜像"><a href="#4-使用镜像" class="headerlink" title="4. 使用镜像"></a>4. 使用镜像</h2><p>&emsp;&emsp;在之前的介绍中，我们知道镜像是 Docker 的三大组件之一。<br>Docker 运行容器前需要本地存在对应的镜像，如果本地不存在该镜像，Docker 会从镜像仓库下载该镜像。</p>
+<h3 id="4-1-获取镜像"><a href="#4-1-获取镜像" class="headerlink" title="4.1 获取镜像"></a>4.1 获取镜像</h3><p>&emsp;&emsp;之前提到过，Docker Hub 上有大量的高质量的镜像可以用，这里我们就说一下怎么获取这些镜像。</p>
+<p>&emsp;&emsp;从 Docker 镜像仓库获取镜像的命令是 docker pull。其命令格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;具体的选项可以通过 docker pull –help 命令看到，这里我们说一下镜像名称的格式。</p>
+<p>&emsp;&emsp;Docker 镜像仓库地址：地址的格式一般是 &lt;域名/IP&gt;[:端口号]。默认地址是 Docker Hub。</p>
+<p>&emsp;&emsp;仓库名：如之前所说，这里的仓库名是两段式名称，即 &lt;用户名&gt;/&lt;软件名&gt;。对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull ubuntu:16.04</span><br><span class="line">16.04: Pulling from library/ubuntu</span><br><span class="line">18d680d61657: Pull complete </span><br><span class="line">0addb6fece63: Pull complete </span><br><span class="line">78e58219b215: Pull complete </span><br><span class="line">eb6959a66df2: Pull complete </span><br><span class="line">Digest: sha256:76702ec53c5e7771ba3f2c4f6152c3796c142af2b3cb1a02fce66c697db24f12</span><br><span class="line">Status: Downloaded newer image for ubuntu:16.04</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;看一下现在都有哪些镜像了</p>
+<p>&emsp;&emsp;<code>docker image ls</code>==<code>docker images</code>都是列出已存在的镜像的意思。</p>
+<div style="width: 100%; margin: auto"><br><center><img src="/2018/11/16/docker学习/2.png" title="说明"></center><br></div>
+
+<h3 id="4-2-运行镜像"><a href="#4-2-运行镜像" class="headerlink" title="4.2 运行镜像"></a>4.2 运行镜像</h3><p>&emsp;&emsp;直接从镜像运行需要使用<code>docker run</code></p>
+<blockquote>
+<p>docker run 来创建容器时，Docker 在后台运行的标准操作包括：</p>
+<ul>
+<li>检查本地是否存在指定的镜像，不存在就从公有仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统，并在只读的镜像层外面挂载一层可读写层</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去</li>
+<li>从地址池配置一个 ip 地址给容器</li>
+<li>执行用户指定的应用程序</li>
+<li>执行完毕后容器被终止</li>
+<li>&emsp;&emsp;<code>docker run -i -t --rm ubuntu:latest bash</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># zxd @ zxd in ~ [15:28:01] </span><br><span class="line">$ docker run -i -t --rm ubuntu:latest bash</span><br><span class="line">root@1a0399b42d27:/# cat /etc/os-release </span><br><span class="line">NAME=&quot;Ubuntu&quot;</span><br><span class="line">VERSION=&quot;18.04.1 LTS (Bionic Beaver)&quot;</span><br><span class="line">ID=ubuntu</span><br><span class="line">ID_LIKE=debian</span><br><span class="line">PRETTY_NAME=&quot;Ubuntu 18.04.1 LTS&quot;</span><br><span class="line">VERSION_ID=&quot;18.04&quot;</span><br><span class="line">HOME_URL=&quot;https://www.ubuntu.com/&quot;</span><br><span class="line">SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;</span><br><span class="line">PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;</span><br><span class="line">VERSION_CODENAME=bionic</span><br><span class="line">UBUNTU_CODENAME=bionic</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>&emsp;&emsp;<code>docker run</code> 就是运行容器的命令，我们这里简要的说明一下上面用到的参数。</p>
+<ul>
+<li><code>-it</code>：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。</li>
+<li><code>--rm</code>：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 –rm 可以避免浪费空间。</li>
+<li><code>ubuntu:latest</code>：这是指用 ubuntu:latest 镜像为基础来启动容器。</li>
+<li><code>bash</code>：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash。进入容器后，我们可以在 Shell 下操作，执行任何所需的命令。这里，我们执行了 cat /etc/os-release，这是 Linux 常用的查看当前系统版本的命令，从返回的结果可以看到容器内是 Ubuntu 8.04.1 LTS 系统。</li>
+<li><code>--name</code> : 标注启动的容器的名字，不然会随机生成一个名字。</li>
+</ul>
+<p>&emsp;&emsp;最后我们通过 exit 退出了这个容器。</p>
+<p>&emsp;&emsp;<font color="Violet" size="3px">这里注意一点，各种操作指令放在前面，后面放镜像名。</font></p>
+<h3 id="4-3-查看运行的容器"><a href="#4-3-查看运行的容器" class="headerlink" title="4.3 查看运行的容器"></a>4.3 查看运行的容器</h3><p>&emsp;&emsp;使用<code>docker ps</code>来查看正在运行的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">5035e60c8e24        ubuntu:latest       &quot;/bin/bash&quot;         21 hours ago        Up 2 hours                              ubuntu</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;使用<code>docker ps -a</code>来查看所有启动过的容器，包括停止的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a </span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                    PORTS               NAMES</span><br><span class="line">5035e60c8e24        ubuntu:latest       &quot;/bin/bash&quot;         21 hours ago        Up 2 hours                                    ubuntu</span><br><span class="line">2242a78ae6f1        hello-world         &quot;/hello&quot;            22 hours ago        Exited (0) 22 hours ago                       eloquent_cohen</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-4-删除容器或镜像"><a href="#4-4-删除容器或镜像" class="headerlink" title="4.4 删除容器或镜像"></a>4.4 删除容器或镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rm [容器ID或名字]      //删除容器</span><br><span class="line">docker rmi [镜像ID或名字]     //删除镜像</span><br></pre></td></tr></table></figure>
+<h2 id="5-Dockerfile"><a href="#5-Dockerfile" class="headerlink" title="5. Dockerfile"></a>5. Dockerfile</h2><p>&emsp;&emsp;<code>Dockerfile</code> 是一个文本文件，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="keyword">RUN</span> apt-get update</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这个 Dockerfile 很简单，一共就两行。涉及到了两条指令，FROM 和 RUN。</p>
+<h3 id="FROM-指定基础镜像"><a href="#FROM-指定基础镜像" class="headerlink" title="FROM 指定基础镜像"></a>FROM 指定基础镜像</h3><p>&emsp;&emsp;所谓定制镜像，那一定是以一个镜像为基础，在其上进行定制。就像我们之前运行了一个 nginx 镜像的容器，再进行修改一样，基础镜像是必须指定的。而 FROM 就是指定基础镜像，因此一个 Dockerfile 中 FROM 是必备的指令，并且必须是第一条指令。</p>
+<p>&emsp;&emsp;在 <a href="https://store.docker.com/" target="_blank" rel="noopener">Docker Store</a> 上有非常多的高质量的官方镜像，有可以直接拿来使用的服务类的镜像，如 nginx、redis、mongo、mysql、httpd、php、tomcat 等；也有一些方便开发、构建、运行各种语言应用的镜像，如 node、openjdk、python、ruby、golang 等。可以在其中寻找一个最符合我们最终目标的镜像为基础镜像进行定制。</p>
+<p>&emsp;&emsp;如果没有找到对应服务的镜像，官方镜像中还提供了一些更为基础的操作系统镜像，如 ubuntu、debian、centos、fedora、alpine 等，这些操作系统的软件库为我们提供了更广阔的扩展空间。</p>
+<p>&emsp;&emsp;除了选择现有镜像为基础镜像外，Docker 还存在一个特殊的镜像，名为 <code>scratch</code>。这个镜像是虚拟的概念，并不实际存在，它表示一个空白的镜像。</p>
+<h3 id="RUN-执行命令"><a href="#RUN-执行命令" class="headerlink" title="RUN 执行命令"></a>RUN 执行命令</h3><p>&emsp;&emsp;RUN 指令是用来执行命令行命令的。由于命令行的强大能力，RUN 指令在定制镜像时是最常用的指令之一。其格式有两种：</p>
+<ul>
+<li><p>shell 格式：RUN &lt;命令&gt;，就像直接在命令行中输入的命令一样。刚才写的 Dockerfile 中的 RUN 指令就是这种格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>exec 格式：RUN [“可执行文件”, “参数1”, “参数2”]</p>
+</li>
+</ul>
+<p>&emsp;&emsp;既然 RUN 就像 Shell 脚本一样可以执行命令，那么我们是否就可以像 Shell 脚本一样把每个命令对应一个 RUN<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> apt-get update</span><br><span class="line">RUN apt-get install -y gcc libc6-dev make</span><br><span class="line">RUN wget -O redis.tar.gz "http://download.redis.io/releases/redis-3.2.5.tar.gz"</span><br><span class="line">RUN mkdir -p /usr/src/redis</span><br><span class="line">RUN tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1</span><br><span class="line">RUN make -C /usr/src/redis</span><br><span class="line">RUN make -C /usr/src/redis install</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;之前说过，Dockerfile 中每一个指令都会建立一层，RUN 也不例外。每一个 RUN 的行为，就和刚才我们手工建立镜像的过程一样：新建立一层，在其上执行这些命令，执行结束后，commit 这一层的修改，构成新的镜像。</p>
+<p>&emsp;&emsp;而上面的这种写法，创建了 7 层镜像。这是完全没有意义的，而且很多运行时不需要的东西，都被装进了镜像里，比如编译环境、更新的软件包等等。结果就是产生非常臃肿、非常多层的镜像，不仅仅增加了构建部署的时间，也很容易出错。 这是很多初学 Docker 的人常犯的一个错误。</p>
+<p><code>上面的 Dockerfile 正确的写法应该是这样：</code><br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> buildDeps='gcc libc6-dev make' \</span><br><span class="line">    &amp;&amp; apt-get update \</span><br><span class="line">    &amp;&amp; apt-get install -y $buildDeps \</span><br><span class="line">    &amp;&amp; wget -O redis.tar.gz "http://download.redis.io/releases/redis-3.2.5.tar.gz" \</span><br><span class="line">    &amp;&amp; mkdir -p /usr/src/redis \</span><br><span class="line">    &amp;&amp; tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \</span><br><span class="line">    &amp;&amp; make -C /usr/src/redis \</span><br><span class="line">    &amp;&amp; make -C /usr/src/redis install \</span><br><span class="line">    &amp;&amp; rm -rf /var/lib/apt/lists/* \</span><br><span class="line">    &amp;&amp; rm redis.tar.gz \</span><br><span class="line">    &amp;&amp; rm -r /usr/src/redis \</span><br><span class="line">    &amp;&amp; apt-get purge -y --auto-remove $buildDeps</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;首先，之前所有的命令只有一个目的，就是编译、安装 redis 可执行文件。因此没有必要建立很多层，这只是一层的事情。因此，这里没有使用很多个 RUN 对一一对应不同的命令，而是仅仅使用一个 RUN 指令，并使用 &amp;&amp; 将各个所需命令串联起来。将之前的 7 层，简化为了 1 层。在撰写 Dockerfile 的时候，要经常提醒自己，这并不是在写 Shell 脚本，而是在定义每一层该如何构建。</p>
+<p>&emsp;&emsp;并且，这里为了格式化还进行了换行。Dockerfile 支持 Shell 类的行尾添加 \ 的命令换行方式，以及行首 # 进行注释的格式。良好的格式，比如换行、缩进、注释等，会让维护、排障更为容易，这是一个比较好的习惯。</p>
+<p>&emsp;&emsp;此外，还可以看到这一组命令的最后添加了清理工作的命令，删除了为了编译构建所需要的软件，清理了所有下载、展开的文件，并且还清理了 apt 缓存文件。这是很重要的一步，我们之前说过，镜像是多层存储，每一层的东西并不会在下一层被删除，会一直跟随着镜像。因此镜像构建时，一定要确保每一层只添加真正需要添加的东西，任何无关的东西都应该清理掉。</p>
+<p>&emsp;&emsp;很多人初学 Docker 制作出了很臃肿的镜像的原因之一，就是忘记了每一层构建的最后一定要清理掉无关文件。</p>
+<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><p>在 <code>Dockerfile</code> 文件所在目录执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ docker build -t myubuntu .</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1/2 : FROM ubuntu:latest</span><br><span class="line"> ---&gt; ea4c82dcd15a</span><br><span class="line">Step 2/2 : RUN apt-get update</span><br><span class="line"> ---&gt; Running in 5f945d0d62fb</span><br><span class="line">Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [83.2 kB]</span><br><span class="line">Get:2 http://archive.ubuntu.com/ubuntu bionic InRelease [242 kB]</span><br><span class="line">Get:3 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [1367 B]</span><br><span class="line">Get:4 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [262 kB]</span><br><span class="line">Get:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]</span><br><span class="line">Get:6 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]</span><br><span class="line">Get:7 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [119 kB]</span><br><span class="line">Get:8 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [186 kB]</span><br><span class="line">Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 Packages [1344 kB]</span><br><span class="line">Get:10 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [11.3 MB]</span><br><span class="line">Get:11 http://archive.ubuntu.com/ubuntu bionic/restricted amd64 Packages [13.5 kB]</span><br><span class="line">Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [730 kB]</span><br><span class="line">Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [10.7 kB]</span><br><span class="line">Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [567 kB]</span><br><span class="line">Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [6142 B]</span><br><span class="line">Get:16 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [2975 B]</span><br><span class="line">Fetched 15.1 MB in 6s (2412 kB/s)</span><br><span class="line">Reading package lists...</span><br><span class="line">Removing intermediate container 5f945d0d62fb</span><br><span class="line"> ---&gt; f55da3abb808</span><br><span class="line">Successfully built f55da3abb808</span><br><span class="line">Successfully tagged myubuntu:latest</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;从命令的输出结果中，我们可以清晰的看到镜像的构建过程。在 Step 2 中，如同我们之前所说的那样，RUN 指令启动了一个容器 <code>5f945d0d62fb</code>，执行了所要求的命令，并最后提交了这一层 <code>f55da3abb808</code>，随后删除了所用到的这个容器 <code>5f945d0d62fb</code>。</p>
+<p>这里我们使用了 docker build 命令进行镜像构建。其格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build [选项] &lt;上下文路径/URL/-&gt;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>-t</code> : 指明生成镜像名称</li>
+</ul>
+<p>&emsp;&emsp;如果注意，会看到 docker build 命令最后有一个 <code>.</code>。<code>.</code> 表示当前目录，而 Dockerfile 就在当前目录，因此不少初学者以为这个路径是在指定 Dockerfile 所在路径，这么理解其实是不准确的。如果对应上面的命令格式，你可能会发现，这是在指定上下文路径。那么什么是上下文呢？</p>
+<p>&emsp;&emsp;首先我们要理解 docker build 的工作原理。Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具。Docker 的引擎提供了一组 REST API，被称为 Docker Remote API，而如 docker 命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互，从而完成各种功能。因此，虽然表面上我们好像是在本机执行各种 docker 功能，但实际上，一切都是使用的远程调用形式在服务端（Docker 引擎）完成。也因为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举。</p>
+<p>&emsp;&emsp;当我们进行镜像构建的时候，并非所有定制都会通过 RUN 指令完成，经常会需要将一些本地文件复制进镜像，比如通过 COPY 指令、ADD 指令等。而 docker build 命令构建镜像，其实并非在本地构建，而是在服务端，也就是 Docker 引擎中构建的。那么在这种客户端/服务端的架构中，如何才能让服务端获得本地文件呢？</p>
+<p>&emsp;&emsp;这就引入了上下文的概念。当构建的时候，用户会指定构建镜像上下文的路径，docker build 命令得知这个路径后，会将路径下的所有内容打包，然后上传给 Docker 引擎。这样 Docker 引擎收到这个上下文包后，展开就会获得构建镜像所需的一切文件。</p>
+<p>&emsp;&emsp;一般来说，应该会将 Dockerfile 置于一个空目录下，或者项目根目录下。如果该目录下没有所需文件，那么应该把所需文件复制一份过来。如果目录下有些东西确实不希望构建时传给 Docker 引擎，那么可以用 .gitignore 一样的语法写一个 .dockerignore，该文件是用于剔除不需要作为上下文传递给 Docker 引擎的。</p>
+<p>&emsp;&emsp;那么为什么会有人误以为 . 是指定 Dockerfile 所在目录呢？这是因为在默认情况下，如果不额外指定 Dockerfile 的话，会将上下文目录下的名为 Dockerfile 的文件作为 Dockerfile。</p>
+<p>&emsp;&emsp;这只是默认行为，实际上 Dockerfile 的文件名并不要求必须为 Dockerfile，而且并不要求必须位于上下文目录中，比如可以用 -f ../Dockerfile.php 参数指定某个文件作为 Dockerfile。</p>
+<p>&emsp;&emsp;当然，一般大家习惯性的会使用默认的文件名 Dockerfile，以及会将其置于镜像构建上下文目录中。</p>
+<h2 id="6-Dockerfile指令详解"><a href="#6-Dockerfile指令详解" class="headerlink" title="6. Dockerfile指令详解"></a>6. Dockerfile指令详解</h2><h3 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h3><p>&emsp;&emsp;<code>COPY</code> 指令将从构建上下文目录中 <code>&lt;源路径&gt;</code>的文件/目录复制到新的一层的镜像内的<code>&lt;目标路径&gt;</code>位置。比如：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span> package.json /usr/src/app/</span><br></pre></td></tr></table></figure></p>
+<h3 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h3><p>&emsp;&emsp;<code>ADD</code> 指令和 <code>COPY</code> 的格式和性质基本一致。但是在 <code>COPY</code> 基础上增加了一些功能。</p>
+<p>&emsp;&emsp;在 <code>Docker</code> 官方的 <code>Dockerfile</code> 最佳实践文档 中要求，尽可能的使用 <code>COPY</code>，因为 <code>COPY</code> 的语义很明确，就是复制文件而已，而 <code>ADD</code> 则包含了更复杂的功能，其行为也不一定很清晰。最适合使用 <code>ADD</code> 的场合，就是所提及的需要自动解压缩的场合。</p>
+<p>&emsp;&emsp;在某些情况下，这个自动解压缩的功能非常有用，比如官方镜像 <code>ubuntu</code> 中：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> scratch</span><br><span class="line"><span class="keyword">ADD</span> ubuntu-xenial-core-cloudimg-amd64-root.tar.gz /</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;因此在 <code>COPY</code> 和 <code>ADD</code> 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 <code>COPY</code> 指令，仅在需要自动解压缩的场合使用 <code>ADD</code>。</p>
+<h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><p><code>CMD</code> 指令的格式和 <code>RUN</code> 相似，也是两种格式：</p>
+<ul>
+<li>shell 格式：CMD &lt;命令&gt;</li>
+<li>exec 格式：CMD [“可执行文件”, “参数1”, “参数2”…]</li>
+<li>参数列表格式：CMD [“参数1”, “参数2”…]。在指定了 ENTRYPOINT 指令后，用 CMD 指定具体的参数。</li>
+</ul>
+<p>&emsp;&emsp;之前介绍容器的时候曾经说过，Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。CMD 指令就是用于指定默认的容器主进程的启动命令的。</p>
+<p>&emsp;&emsp;如果使用 shell 格式的话，实际的命令会被包装为 sh -c 的参数的形式进行执行。比如：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="keyword">RUN</span> apt-get update \</span><br><span class="line">	&amp;&amp; apt-get install -y curl \</span><br><span class="line">	&amp;&amp; rm -rf /var/lib/apt/lists/*</span><br><span class="line">CMD curl cip.cc     /等价于 CMD ["curl","-s","cip.cc"]</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;最后的<code>CMD curl cip.cc</code>在实际的执行中会将其变为：</p>
+<p>&emsp;&emsp;<code>CMD [ &quot;sh&quot;, &quot;-c&quot;, &quot;curl cip.cc&quot; ]</code>,也就是说主进程实际上是 <code>sh</code>。那么当 <code>curl cip.cc</code> 命令结束后，<code>sh</code> 也就结束了，<code>sh</code> 作为主进程退出了，自然就会令容器退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t curl .     //构建新的镜像命名为curl</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> docker run --rm curl:latest          </span><br><span class="line">IP	: 153.3.0.xx</span><br><span class="line">地址	: 中国 xx  xx</span><br><span class="line">运营商	: 联通</span><br><span class="line"></span><br><span class="line">数据二	: 江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">数据三	: 中国江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">URL	: http://www.cip.cc/153.3.0.xx</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;那如果我们想在后面加个参数<code>-i</code>,希望显示 HTTP 头信息，直接在<code>docker run</code>的后面加能行吗？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --rm curl:latest -i          </span><br><span class="line">docker: Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused &quot;exec: \&quot;-i\&quot;: executable file not found in $PATH&quot;: unknown.</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;但是我们可以这样，在镜像后面敲出完整的指令，<font color="Violet" size="3px">因为跟在镜像名后面的是 <code>command</code>，运行时会替换 <code>CMD</code> 的默认值。</font>因此这里的 <code>curl -s cip.cc -i</code> 替换了原来的 <code>CMD</code>，而原来的<code>-i</code>根本就不是合法的命令，所以自然找不到。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --rm curl:latest curl -s cip.cc -i</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx</span><br><span class="line">Date: Sun, 18 Nov 2018 11:23:18 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">X-cip-c: H</span><br><span class="line"></span><br><span class="line">IP	: 153.3.0.xx</span><br><span class="line">地址	: 中国 xx  xx</span><br><span class="line">运营商	: 联通</span><br><span class="line"></span><br><span class="line">数据二	: 江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">数据三	: 中国江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">URL	: http://www.cip.cc/153.3.0.xx</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;那如果想不输入完整的指令，而想直接加个参数，如加个<code>-i</code>就可以显示 HTTP 头信息，该怎么办呢？那就要用到下一个命令<code>ENTRYPOINT</code> 入口点了</p>
+<h3 id="ENTRYPOINT-入口点"><a href="#ENTRYPOINT-入口点" class="headerlink" title="ENTRYPOINT 入口点"></a>ENTRYPOINT 入口点</h3><p>&emsp;&emsp;当指定了 <code>ENTRYPOINT</code> 后，<code>CMD</code> 的含义就发生了改变，不再是直接的运行其命令，而是将 <code>CMD</code> 的内容作为参数传给 <code>ENTRYPOINT</code> 指令，换句话说实际执行时，将变为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ENTRYPOINT&gt; &quot;&lt;CMD&gt;&quot;    //命令变为参数传给ENTRYPOINT</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;还是举前面的查公网IP的例子，将Dockerfile更改为：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="keyword">RUN</span> apt-get update \</span><br><span class="line">	&amp;&amp; apt-get install -y curl \</span><br><span class="line">	&amp;&amp; rm -rf /var/lib/apt/lists/*</span><br><span class="line">ENTRYPOINT ["curl","-s","cip.cc"]</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;<code>build</code> 镜像命名为<code>curl_entrypoint</code>,运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --rm curl_entrypoint:latest           </span><br><span class="line">IP	: 153.3.0.xx</span><br><span class="line">地址	: 中国 xx  xx</span><br><span class="line">运营商	: 联通</span><br><span class="line"></span><br><span class="line">数据二	: 江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">数据三	: 中国江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">URL	: http://www.cip.cc/153.3.0.xx</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;那么加上参数<code>-i</code>呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --rm curl_entrypoint:latest -i</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx</span><br><span class="line">Date: Sun, 18 Nov 2018 11:57:40 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Vary: Accept-Encoding</span><br><span class="line">X-cip-c: H</span><br><span class="line"></span><br><span class="line">IP	: 153.3.0.xx</span><br><span class="line">地址	: 中国 xx  xx</span><br><span class="line">运营商	: 联通</span><br><span class="line"></span><br><span class="line">数据二	: 江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">数据三	: 中国江苏省xx市 | 联通</span><br><span class="line"></span><br><span class="line">URL	: http://www.cip.cc/153.3.0.xx</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;由此可以看出<code>CMD</code>命令和<code>ENTRYPOINT</code>入口点的区别</p>
+<h3 id="ENV-设置环境变量"><a href="#ENV-设置环境变量" class="headerlink" title="ENV 设置环境变量"></a>ENV 设置环境变量</h3><p>&emsp;&emsp;这个指令很简单，就是设置环境变量而已，无论是后面的其它指令，如 RUN，还是运行时的应用，都可以直接使用这里定义的环境变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br><span class="line">eg:ENV NODE_VERSION 7.2.0</span><br><span class="line">ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...</span><br><span class="line">eg:ENV VERSION=1.0 DEBUG=on NAME=&quot;Happy Feet&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="VOLUME-定义匿名卷"><a href="#VOLUME-定义匿名卷" class="headerlink" title="VOLUME 定义匿名卷"></a>VOLUME 定义匿名卷</h3><p>&emsp;&emsp;之前我们说过，容器运行时应该尽量保持容器存储层不发生写操作，对于数据库类需要保存动态数据的应用，其数据库文件应该保存于卷(volume)中，后面的章节我们会进一步介绍 Docker 卷的概念。为了防止运行时用户忘记将动态文件所保存目录挂载为卷，在 Dockerfile 中，我们可以事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据。<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">VOLUME</span> /data</span><br></pre></td></tr></table></figure></p>
+<h3 id="EXPOSE-声明端口"><a href="#EXPOSE-声明端口" class="headerlink" title="EXPOSE 声明端口"></a>EXPOSE 声明端口</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式为 <span class="keyword">EXPOSE</span> &lt;端口<span class="number">1</span>&gt; [&lt;端口<span class="number">2</span>&gt;...]。</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>EXPOSE</code> 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务。在 <code>Dockerfile</code> 中写入这样的声明有两个好处，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个用处则是在运行时使用随机端口映射时，也就是 <code>docker run -P</code> 时，会自动随机映射 <code>EXPOSE</code> 的端口。</p>
+<p>&emsp;&emsp;要将 <code>EXPOSE</code> 和在运行时使用 <code>-p &lt;宿主端口&gt;:&lt;容器端口&gt;</code> 区分开来。-p，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 <code>EXPOSE</code> 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。</p>
+<h2 id="7-挂载主机目录"><a href="#7-挂载主机目录" class="headerlink" title="7.挂载主机目录"></a>7.挂载主机目录</h2><p>&emsp;&emsp;使用 <code>--mount</code> 标记可以指定挂载一个本地主机的目录到容器中去。<br><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="keyword">run</span> -d -P \</span><br><span class="line">    --name web \</span><br><span class="line">    # -v /src/webapp:/opt/webapp \</span><br><span class="line">    --mount type=bind,source=/src/webapp,target=/opt/webapp \</span><br><span class="line">    training/webapp \</span><br><span class="line">    python app.py</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;使用<code>-v /src/webapp:/opt/webapp</code>是之前的一种挂载的方法。上面的命令加载主机的 /src/webapp 目录到容器的 /opt/webapp目录。这个功能在进行测试的时候十分方便，比如用户可以放置一些程序到本地目录中，来查看容器是否正常工作。本地目录的路径必须是绝对路径，以前使用 -v 参数时如果本地目录不存在 Docker 会自动为你创建一个文件夹，现在使用 –mount 参数时如果本地目录不存在，Docker 会报错。</p>
+<p>&emsp;&emsp;Docker 挂载主机目录的默认权限是<font color="Violet" size="3px">读写</font>，用户也可以通过增加 readonly 指定为 <font color="Violet" size="3px">只读</font>。<br><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="keyword">run</span> -d -P \</span><br><span class="line">    --name web \</span><br><span class="line">    # -v /src/webapp:/opt/webapp:ro \</span><br><span class="line">    --mount type=bind,source=/src/webapp,target=/opt/webapp,readonly \</span><br><span class="line">    training/webapp \</span><br><span class="line">    python app.py</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这样权限就变为只读了，在容器内部创建文件会报错。</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

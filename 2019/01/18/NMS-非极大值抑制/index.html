@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="welcome to my website">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZXD">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="NMS 非极大值抑制"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="welcome to my website" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="些许流年"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>NMS 非极大值抑制 - 些许流年</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about/my.html">
+                    个人
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/18/NMS-非极大值抑制/">
+                NMS 非极大值抑制
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-01-18</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/深度学习/">深度学习</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="NMS-非极大值抑制"><a href="#NMS-非极大值抑制" class="headerlink" title="NMS 非极大值抑制"></a><center>NMS 非极大值抑制</center></h1><p>&emsp;&emsp;<code>非极大值抑制(NMS)</code>是目标检测、人脸检测中比较常用的一种去除重复目标框的算法，下面以人脸检测为例子，详细的对NMS算法进行分析。</p>
+<p>&emsp;&emsp;首先来看一副没有经过极大值抑制的人脸检测的图片。</p>
+<div style="width: 60%; margin: auto"><br><center><img src="/2019/01/18/NMS-非极大值抑制/111.png" title="[NMS前效果]"></center><br></div><br>&emsp;&emsp;可以看到人脸周围有一些重复、混杂的候选框，这是我们不想看到的。<br><br>&emsp;&emsp;一般由模型生成的候选框格式为<em>Mx5</em>的矩阵如上图的13个候选框，可以表示为如下的矩阵。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[[605.81859586 241.9870858  700.2810722  364.39490232   0.99813652]</span><br><span class="line"> [604.46993595 241.94542132 701.05659627 362.6476619    0.99952543]</span><br><span class="line"> [607.75556511 242.27479172 700.98139177 361.36630836   0.99824369]</span><br><span class="line"> [607.31619582 235.84528071 703.34242228 364.37593491   0.99813581]</span><br><span class="line"> [391.33261696 232.13301024 503.14739725 368.47360138   0.99732131]</span><br><span class="line"> [389.78343755 231.74821711 504.23048349 369.45828512   0.99716467]</span><br><span class="line"> [149.77004275 265.61997575 257.41437337 382.3174709    0.99953663]</span><br><span class="line"> [390.23283872 230.75751062 504.22839069 372.18188326   0.99547029]</span><br><span class="line"> [391.34597505 232.12956198 504.59239189 368.02716969   0.99861956]</span><br><span class="line"> [391.51429539 230.70551069 507.19974793 375.07921828   0.99901474]</span><br><span class="line"> [389.82507351 230.74490997 502.93040028 373.79520297   0.99129468]</span><br><span class="line"> [151.20828396 263.95166993 255.72295459 382.8332618    0.99350882]</span><br><span class="line"> [390.00525969 227.63024712 504.61705256 378.54596627   0.99982077]]</span><br></pre></td></tr></table></figure><br><br>&emsp;&emsp;分表表示候选框的左上、右下坐标点及置信概率p,表示为：<code>[x1,y1,x2,y2,p]</code>，NMS是如何对上述候选框进行处理的呢?看代码吧<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">ef nms(boxes, overlap_threshold=<span class="number">0.5</span>, mode=<span class="string">'union'</span>):</span><br><span class="line">    x1 = boxes[:, <span class="number">0</span>]        <span class="comment">#矩形左上角的x坐标</span></span><br><span class="line">    y1 = boxes[:, <span class="number">1</span>]        <span class="comment">#矩形左上角的y坐标</span></span><br><span class="line">    x2 = boxes[:, <span class="number">2</span>]        <span class="comment">#矩形右下角的x坐标    </span></span><br><span class="line">    y2 = boxes[:, <span class="number">3</span>]        <span class="comment">#矩形右下角的y坐标</span></span><br><span class="line">    scores = boxes[:, <span class="number">4</span>]    <span class="comment">#矩形候选框的置信度</span></span><br><span class="line"></span><br><span class="line">    areas = (x2 - x1 + <span class="number">1</span>) * (y2 - y1 + <span class="number">1</span>)   <span class="comment">#计算每个矩阵候选框的面积，+1是为了数值稳定性</span></span><br><span class="line">    order = scores.argsort()[::<span class="number">-1</span>]</span><br><span class="line">    <span class="comment">#按置信度进行排序(从大到小)</span></span><br><span class="line">    <span class="comment">#返回值的索引[12  6  1  9  8  2  0  3  4  5  7 11 10]</span></span><br><span class="line"></span><br><span class="line">    keep = []       <span class="comment">#要保留的索引的列表</span></span><br><span class="line">    <span class="keyword">while</span> order.size &gt; <span class="number">0</span>:</span><br><span class="line">        i = order[<span class="number">0</span>]        <span class="comment">#取出置信度最大的索引</span></span><br><span class="line">        keep.append(i)      <span class="comment">#放在保留索引的列表中</span></span><br><span class="line">        xx1 = np.maximum(x1[i], x1[order[<span class="number">1</span>:]])  </span><br><span class="line">        yy1 = np.maximum(y1[i], y1[order[<span class="number">1</span>:]])</span><br><span class="line">        xx2 = np.minimum(x2[i], x2[order[<span class="number">1</span>:]])</span><br><span class="line">        yy2 = np.minimum(y2[i], y2[order[<span class="number">1</span>:]])</span><br><span class="line">        <span class="comment">#上述四句代码取选中的矩形框和其余的12个矩形框一一比对，取左上角坐标较大的和右下角坐标较小的。</span></span><br><span class="line">        <span class="comment">#如果两个矩形相交，则构成相交区域矩形的两个顶点</span></span><br><span class="line"></span><br><span class="line">        w = np.maximum(<span class="number">0.0</span>, xx2 - xx1 + <span class="number">1</span>)      <span class="comment">#相交时宽是正值，不想交的话宽为0</span></span><br><span class="line">        h = np.maximum(<span class="number">0.0</span>, yy2 - yy1 + <span class="number">1</span>)      <span class="comment">#相交时高是正值，不想交的话高为0</span></span><br><span class="line">        inter = w * h           <span class="comment">#计算交集的面积，不想交的话值为0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> mode <span class="keyword">is</span> <span class="string">'min'</span>:</span><br><span class="line">            ovr = inter / np.minimum(areas[i], areas[order[<span class="number">1</span>:]])    <span class="comment">#交集占较小面积的比例</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ovr = inter / (areas[i] + areas[order[<span class="number">1</span>:]] - inter)     <span class="comment">#交集占并集的比例</span></span><br><span class="line">            <span class="comment">#[0.         0.         0.92467885 0.89049933 0.         0.</span></span><br><span class="line">            <span class="comment">#0.         0.8821858  0.90842802 0.93252505 0.         0.93301262]</span></span><br><span class="line"></span><br><span class="line">        inds = np.where(ovr &lt;= overlap_threshold)[<span class="number">0</span>]     <span class="comment">#获取比例小于阈值的ovr的索引[ 0  1  4  5  6 10]</span></span><br><span class="line">        order = order[inds + <span class="number">1</span>]                          <span class="comment">#order的索引为ovr的索引+1 order[1 2 5 6 7 11]</span></span><br><span class="line">        <span class="comment">#order=[ 6  1  2  0  3 11]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> keep</span><br><span class="line">    <span class="comment"># keep=[12 6 1]</span></span><br><span class="line">    <span class="comment"># boxes=boxes[keep]</span></span><br><span class="line">    <span class="comment"># [[390.00525969 227.63024712 504.61705256 378.54596627   0.99982077]</span></span><br><span class="line">    <span class="comment"># [149.77004275 265.61997575 257.41437337 382.3174709    0.99953663]</span></span><br><span class="line">    <span class="comment"># [604.46993595 241.94542132 701.05659627 362.6476619    0.99952543]]</span></span><br></pre></td></tr></table></figure><br><br>&emsp;&emsp;经过NMS后的效果<br><div style="width: 60%; margin: auto"><br><center><img src="/2019/01/18/NMS-非极大值抑制/222.png" title="[NMS后效果]"></center><br></div>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    欢迎您能来到我的GitHub博客主页:<a href="https://github.com/xiexuliunian">zxd</a>.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/faster-rcnn重读记录/">faster rcnn重读记录</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/18/NMS-非极大值抑制/">NMS 非极大值抑制</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/16/计算数据集的mean和std/">计算数据集的mean和std</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/pytorch和gluon的不同/">pytorch和gluon的不同</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/词/">词</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构/">数据结构</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据库/">数据库</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/诗/">诗</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xiexuliunian">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:zzuzxd@126.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    zxd. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">YF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

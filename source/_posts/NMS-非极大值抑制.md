@@ -79,4 +79,5 @@ ef nms(boxes, overlap_threshold=0.5, mode='union'):
 &emsp;&emsp;经过NMS后的效果
 <div style="width: 60%; margin: auto">
 <center>{% asset_img 222.png [NMS后效果] %}</center>
+ 我把所有文章都更新到语雀了，更好关注内容。
 </div>
